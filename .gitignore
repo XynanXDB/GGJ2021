@@ -66,4 +66,5 @@ crashlytics-build.properties
 Assets/Plugins/FMOD/
 Assets/StreamingAssets/
 GGJ2021/Assets/Plugins/
+GGJ2021/Assets/StreamingAssets/
 GGJ2021/fmod_editor.log
