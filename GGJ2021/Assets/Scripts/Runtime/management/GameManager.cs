@@ -9,27 +9,29 @@ public class GameManager : MonoBehaviour
     {
         public string ItemName;
         public GameObject ItemPrefab;
-        public GameObject SpawnedObj;
         public bool canHold;
         public bool disableOnUse;
         public string ItemRemove;
         public List<Transform> spawnLocale;
         public Transform HoldItemPos;
+    }    
 
-    }
     public List<InteractableObjects> AllItems;
 
     [Header("UI Pop UP Curve")]
+    public float popSpeed = 4f;
     public AnimationCurve PopUpAnim;
 
     List<string> itemInventory = new List<string>();
+
+    Dictionary<string, GameObject> SpawnedObjectDic = new Dictionary<string, GameObject>();
     public static GameManager m_instance;
     InteractableObjects TempItem;
 
 
     private void Awake()
     {
-        if (m_instance = null)
+        if (m_instance == null)
         {
             m_instance = this;
         }
@@ -58,7 +60,9 @@ public class GameManager : MonoBehaviour
             obj.transform.position = spawnPoint.position;
             obj.transform.rotation = spawnPoint.rotation;
             obj.name = item.ItemName;
-            item.SpawnedObj = obj;
+            obj.transform.GetChild(0).gameObject.SetActive(false);
+            yield return null;
+            SpawnedObjectDic.Add(item.ItemName, obj);
             yield return null;
         }
     }
@@ -95,23 +99,25 @@ public class GameManager : MonoBehaviour
         {
             // attach to arm
             AddItem(TempItem);
-            TempItem.SpawnedObj.transform.parent = TempItem.HoldItemPos;
-            TempItem.SpawnedObj.transform.localPosition = Vector3.zero;
-            TempItem.SpawnedObj.transform.localEulerAngles = Vector3.zero;
+            GameObject obj = SpawnedObjectDic[TempItem.ItemName];
+            obj.transform.parent = TempItem.HoldItemPos;
+            obj.transform.localPosition = Vector3.zero;
+            obj.transform.localEulerAngles = Vector3.zero;
         }
         else
         {
             // item that either just disappear or interact with ( sprays/ clothing )
             AddItem(TempItem);
-            if(TempItem.disableOnUse)
+            GameObject obj = SpawnedObjectDic[TempItem.ItemName];
+            if (TempItem.disableOnUse)
             {
                 // use for phone wallet house keys
-                TempItem.SpawnedObj.SetActive(false);
+                obj.SetActive(false);
             }
             else
             {
                 // disable the spray so it wont keep firing
-                StartCoroutine(DisableObjectTemporary(TempItem.SpawnedObj));
+                StartCoroutine(DisableObjectTemporary(obj));
             }
         }
     }
@@ -128,7 +134,7 @@ public class GameManager : MonoBehaviour
     public void PopUpUI(string ItemName)
     {
         TempItem = FindItemInQuestion(ItemName);
-        GameObject uipopObj = TempItem.SpawnedObj.transform.GetChild(0).gameObject;
+        GameObject uipopObj = SpawnedObjectDic[TempItem.ItemName].transform.GetChild(0).gameObject;
         StartCoroutine(PopUpUICoroutine(uipopObj));
     }
 
@@ -140,7 +146,7 @@ public class GameManager : MonoBehaviour
         obj.SetActive(true);
         while (elapsedTime < 1)
         {
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.deltaTime * popSpeed;
             obj.transform.localScale = PopUpAnim.Evaluate(elapsedTime) * OriSize;
             yield return new WaitForEndOfFrame();
         }
@@ -150,7 +156,7 @@ public class GameManager : MonoBehaviour
     public void PopDownUI(string ItemName)
     {
         TempItem = FindItemInQuestion(ItemName);
-        GameObject uipopObj = TempItem.SpawnedObj.transform.GetChild(0).gameObject;
+        GameObject uipopObj = SpawnedObjectDic[TempItem.ItemName].transform.GetChild(0).gameObject;
         StartCoroutine(PopDownUICoroutine(uipopObj));
     }
 
@@ -160,7 +166,7 @@ public class GameManager : MonoBehaviour
         Vector3 OriSize = obj.transform.localScale;
         while (elapsedTime < 1)
         {
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.deltaTime * popSpeed;
             obj.transform.localScale = PopUpAnim.Evaluate(1-elapsedTime) * OriSize;
             yield return new WaitForEndOfFrame();
         }

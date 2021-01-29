@@ -15,6 +15,8 @@ public class PickableItem : MonoBehaviour
     {
         if(other.gameObject.tag == "PlayerInteract")
         {
+            if(manager == null)
+                manager = GameManager.m_instance;
             PopUpUI();
             //InteractWithPlayer();
         }
@@ -27,14 +29,13 @@ public class PickableItem : MonoBehaviour
         }
     }
 
-    void InteractWithPlayer()
+    void InteractWithPlayer() // use this to see if Item Should be attached to player hand
     {
         manager.InteractWithItem(gameObject.name);
     }
 
     void PopUpUI()
     {
-        Debug.Log("POPIN");
         manager.PopUpUI(gameObject.name);
     }
 
