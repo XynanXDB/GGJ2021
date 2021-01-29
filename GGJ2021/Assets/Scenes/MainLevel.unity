@@ -209,6 +209,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1062099220, guid: d1902f1fb6b27ae40ab99acc2ab7c4e1, type: 3}
+      propertyPath: FlipForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760805303853535920, guid: d1902f1fb6b27ae40ab99acc2ab7c4e1, type: 3}
+      propertyPath: m_Name
+      value: InteractionBox
+      objectReference: {fileID: 0}
     - target: {fileID: 8121724279523315660, guid: d1902f1fb6b27ae40ab99acc2ab7c4e1, type: 3}
       propertyPath: RotationReferenceTransform
       value: 
@@ -353,7 +361,7 @@ GameObject:
   - component: {fileID: 993742907}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Flippable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

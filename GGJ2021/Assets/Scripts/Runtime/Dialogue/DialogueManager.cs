@@ -20,7 +20,9 @@ namespace Game.Runtime.Dialogue
 
         [SerializeField] protected DialogueDatabase DialogueDB;
         [SerializeField] protected DialogueRunner DialogueRunner;
-
+        [SerializeField] protected DialogueUI DialogueUI;
+        
+        private 
         void Awake()
         {
             DontDestroyOnLoad(this);

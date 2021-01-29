@@ -36,7 +36,7 @@ public class @RLWControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""Interact"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""9343081b-3203-4ede-8706-6df11dfac78e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",

@@ -8,6 +8,7 @@ namespace Game.Runtime.Player
     {
         private InputHandler InputHandler;
         [SerializeField] protected MovementHandler MovementHandler;
+        [SerializeField] protected InteractionHandler InteractionHandler;
         
         void Awake()
         {
@@ -26,7 +27,7 @@ namespace Game.Runtime.Player
         public void OnInteract(InputAction.CallbackContext context)
         {
             if (context.performed)
-                Debug.Log("Interact");
+                InteractionHandler.Interact();
         }
     }
 }

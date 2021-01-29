@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 870470031}
   - component: {fileID: 870470030}
   - component: {fileID: 870470032}
+  - component: {fileID: 870470033}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -153,6 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f739b8d5d2114d028f51e42c2caf79d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogueDB: {fileID: 0}
+  DialogueRunner: {fileID: 870470032}
 --- !u!4 &870470031
 Transform:
   m_ObjectHideFlags: 0
@@ -181,8 +184,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yarnScripts: []
   textLanguage: 
-  variableStorage: {fileID: 0}
-  dialogueUI: {fileID: 0}
+  variableStorage: {fileID: 870470033}
+  dialogueUI: {fileID: 1014286641}
   startNode: Start
   startAutomatically: 0
   onNodeStart:
@@ -192,6 +195,111 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onDialogueComplete:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &870470033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870470029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 610c541718d694070a21327d1ae62e75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultVariables:
+  - name: 
+    value: 
+    type: 0
+  - name: 
+    value: 
+    type: 0
+  - name: 
+    value: 
+    type: 0
+  - name: 
+    value: 
+    type: 0
+  - name: 
+    value: 
+    type: 0
+  - name: 
+    value: 
+    type: 0
+  debugTextView: {fileID: 0}
+--- !u!1 &1014286639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1014286640}
+  - component: {fileID: 1014286641}
+  m_Layer: 0
+  m_Name: DialogueUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1014286640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014286639}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1014286641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014286639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04317fce65da54f4997a5c4465b4e93c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueContainer: {fileID: 0}
+  textSpeed: 0.025
+  optionButtons: []
+  onDialogueStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onDialogueEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  onLineStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onLineFinishDisplaying:
+    m_PersistentCalls:
+      m_Calls: []
+  onLineUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  onLineEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  onOptionsStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onOptionsEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  onCommand:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1208550898

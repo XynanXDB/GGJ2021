@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerInteract
+  - Flippable
+  - Interactable
   layers:
   - Default
   - TransparentFX
