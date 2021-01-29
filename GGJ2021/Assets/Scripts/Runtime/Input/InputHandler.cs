@@ -8,7 +8,7 @@ namespace Game.Runtime.Input
         UI
     }
     
-    public class InputHandler : MonoBehaviour
+    public class InputHandler
     {
         private RLWControls Controls;
 
@@ -33,7 +33,7 @@ namespace Game.Runtime.Input
             }
         }
 
-        void Awake()
+        public InputHandler()
         {
             Controls = new RLWControls();
             Controls.Game.Enable();
