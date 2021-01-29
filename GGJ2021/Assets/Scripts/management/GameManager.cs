@@ -15,10 +15,12 @@ public class GameManager : MonoBehaviour
         public string ItemRemove;
         public List<Transform> spawnLocale;
         public Transform HoldItemPos;
-        public GameObject UIInteract;
 
     }
     public List<InteractableObjects> AllItems;
+
+    [Header("UI Pop UP Curve")]
+    public AnimationCurve PopUpAnim;
 
     List<string> itemInventory = new List<string>();
     public static GameManager m_instance;
@@ -123,9 +125,48 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void  PopUpUI()
+    public void PopUpUI(string ItemName)
     {
+        TempItem = FindItemInQuestion(ItemName);
+        GameObject uipopObj = TempItem.SpawnedObj.transform.GetChild(0).gameObject;
+        StartCoroutine(PopUpUICoroutine(uipopObj));
+    }
 
+    IEnumerator PopUpUICoroutine (GameObject obj)
+    {
+        obj.transform.rotation = Quaternion.identity;
+        float elapsedTime = 0;
+        Vector3 OriSize = obj.transform.localScale;
+        obj.SetActive(true);
+        while (elapsedTime < 1)
+        {
+            elapsedTime += Time.deltaTime;
+            obj.transform.localScale = PopUpAnim.Evaluate(elapsedTime) * OriSize;
+            yield return new WaitForEndOfFrame();
+        }
+        yield return null;
+    }
+
+    public void PopDownUI(string ItemName)
+    {
+        TempItem = FindItemInQuestion(ItemName);
+        GameObject uipopObj = TempItem.SpawnedObj.transform.GetChild(0).gameObject;
+        StartCoroutine(PopDownUICoroutine(uipopObj));
+    }
+
+    IEnumerator PopDownUICoroutine (GameObject obj)
+    {
+        float elapsedTime = 0;
+        Vector3 OriSize = obj.transform.localScale;
+        while (elapsedTime < 1)
+        {
+            elapsedTime += Time.deltaTime;
+            obj.transform.localScale = PopUpAnim.Evaluate(1-elapsedTime) * OriSize;
+            yield return new WaitForEndOfFrame();
+        }
+        obj.SetActive(false);
+        obj.transform.localScale = OriSize;
+        yield return null;
     }
 
     // used for Story Part will return true or false

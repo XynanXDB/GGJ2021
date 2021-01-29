@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PickableItem : MonoBehaviour
 {
-    public GameObject PickUpUI;
     GameManager manager;
 
     private void Start()
@@ -16,7 +15,15 @@ public class PickableItem : MonoBehaviour
     {
         if(other.gameObject.tag == "PlayerInteract")
         {
-            InteractWithPlayer();
+            PopUpUI();
+            //InteractWithPlayer();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.tag == "PlayerInteract")
+        {
+            PopDownUI();
         }
     }
 
@@ -25,8 +32,14 @@ public class PickableItem : MonoBehaviour
         manager.InteractWithItem(gameObject.name);
     }
 
-    void HighlightInteractable()
+    void PopUpUI()
     {
-        manager.InteractWithItem(gameObject.name);
+        Debug.Log("POPIN");
+        manager.PopUpUI(gameObject.name);
+    }
+
+    void PopDownUI()
+    {
+        manager.PopDownUI(gameObject.name);
     }
 }
