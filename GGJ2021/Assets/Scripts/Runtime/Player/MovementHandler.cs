@@ -5,7 +5,6 @@ namespace Game.Runtime.Player
     public class MovementHandler : MonoBehaviour
     {
         [SerializeField] protected float MovementSpeed = 5.0f;
-        [SerializeField] protected Transform RotationReferenceTransform;
         [SerializeField] private Rigidbody Rigidbody;
         
         private Vector3 _MovementVector;
@@ -24,8 +23,6 @@ namespace Game.Runtime.Player
         
         void Awake()
         {
-            if (RotationReferenceTransform == null)
-                Debug.LogError("Rotation reference not set, movement won't work properly.");
             
             TransformToMove = transform;
         }
