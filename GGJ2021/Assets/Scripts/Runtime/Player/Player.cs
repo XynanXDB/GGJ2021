@@ -43,5 +43,22 @@ namespace Game.Runtime.Player
         }
 
         public FSpeakerInfo GetSpeakerInfo() => SpeakerInfo;
+        
+        public void SendNativeCommand(string[] Data)
+        {
+            if (Data[0] != SpeakerInfo.Name) 
+                return;
+
+            switch (Data[1])
+            {
+                case "InputModeUI":
+                    InputHandler.SetInputMode(InputMode.UI);
+                    break;
+                
+                case "InputModeGame":
+                    InputHandler.SetInputMode(InputMode.Game);
+                    break;
+            }
+        }
     }
 }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DialogueDB
   m_EditorClassIdentifier: 
   DialogueDB:
-  - Key: Ending
-    YarnAsset: {fileID: 0}
+  - Key: Test
+    YarnAsset: {fileID: 11400000, guid: 40a60c3c28a91d34bbf2088bb0d2824a, type: 3}

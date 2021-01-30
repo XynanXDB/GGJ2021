@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Game.Utility;
 using UnityEngine;
+using UnityEngine.UI;
 using Yarn.Unity;
 
 namespace Game.Runtime.Dialogue
@@ -26,40 +27,41 @@ namespace Game.Runtime.Dialogue
         [SerializeField] protected DialogueUI DialogueUI;
         
         private OneParamSignature<YarnCommandPacket> OnReceiveSetSpeaker;
-        private List<ITalkable> JoinedSpeakers;
+        private ITalkable Player;
+        private ITalkable Speaker2;
         
         void Awake()
         {
             if (_DialogueManager == null)
                 _DialogueManager = this;
-
-            JoinedSpeakers = new List<ITalkable>();
             
             DialogueRunner.AddCommandHandler("SetSpeaker", SetSpeaker);
             
-            
             DialogueUI.onDialogueEnd.AddListener(OnDialogueEnd);
+            Player = GameObject.FindGameObjectWithTag("Player").GetComponent<ITalkable>();
+            Player.SendNativeCommand(new []{"JB", "InputModeUI"});
+        }
+
+        void Start()
+        {
+            //StartDialogue("Test");
         }
 
         void OnDialogueEnd()
         {
             DialogueRunner.Clear();
-            JoinedSpeakers?.Clear();
         }
 
         void OnDestroy() => OnReceiveSetSpeaker = null;
 
-        public void InitiateDialogue(string YarnAssetName, List<ITalkable> InSpeakers = null,
+        public void InitiateDialogue(string YarnAssetName, ITalkable InSpeaker = null,
             string StartNodeName = "Start")
         {
-            JoinedSpeakers = InSpeakers;
-
-            if (InSpeakers != null)
-            {
-                foreach (ITalkable I in InSpeakers)
-                    JoinConversation(I);
-            }
+            Speaker2 = InSpeaker;
             
+            if (InSpeaker != null)
+                JoinConversation(InSpeaker);
+
             StartDialogue(YarnAssetName, StartNodeName);
         }
         
@@ -79,6 +81,9 @@ namespace Game.Runtime.Dialogue
         {
             FSpeakerInfo SpeakerInfo = Speaker.GetSpeakerInfo();
             //TODO Add speaker to the UI.
+            
+            if (SpeakerInfo.Name == "JB")
+                Speaker.SendNativeCommand(new []{"JB", "InputModeUI"});
         }
 
         #region CommandHandlers
@@ -91,8 +96,6 @@ namespace Game.Runtime.Dialogue
             
             OnReceiveSetSpeaker?.Invoke(new YarnCommandPacket(Commands[0], Commands[1]));
         }
-        
-
         #endregion
     }
 }

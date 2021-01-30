@@ -11,5 +11,6 @@ namespace Game.Runtime.Dialogue
     public interface ITalkable
     {
         FSpeakerInfo GetSpeakerInfo();
+        void SendNativeCommand(string[] Data);
     }
 }
