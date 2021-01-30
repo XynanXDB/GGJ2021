@@ -51,6 +51,11 @@ namespace Game.Runtime.Player
 
         void Update()
         {
+            if (_MovementVector.sqrMagnitude <= 0.0f)
+            {
+                return;
+            }
+
             Transform T = transform;
             Quaternion OffsetRotation = Quaternion.AngleAxis(45.0f, Vector3.up);
             Vector3 Vertical = OffsetRotation * T.forward * (_MovementVector.z * Time.deltaTime);

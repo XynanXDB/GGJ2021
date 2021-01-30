@@ -11,8 +11,8 @@ namespace Game.Runtime.Player
         
         private void Update()
         {
-            float VelocityRatio = MovementHandler.GetVelocity.magnitude / MovementHandler.GetMaxMovementSpeed;
-            Animator.SetFloat(StringConstants.AnimationVelocity, VelocityRatio);
+            //float VelocityRatio = MovementHandler.GetVelocity.magnitude / MovementHandler.GetMaxMovementSpeed;
+            Animator.SetFloat(StringConstants.AnimationVelocity, 1);
         }
     }
 }

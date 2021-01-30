@@ -128,6 +128,7 @@ public class GameManager : MonoBehaviour
         //                                      need convert to string here or something more faster and light weight
 
         // then end here after duration over  ~~~ CountDownTime ~~~~~
+        
 
         // if early end run this will add the run early in
         CameEarly();
