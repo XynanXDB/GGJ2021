@@ -41,7 +41,7 @@ namespace Game.Runtime.Player
                 InteractableObjects.Remove(Other);
         }
 
-        public void Interact(PickableItem Item = null)
+        public void Interact()
         {
             if (FlippableObjects.Count > 0)
             {
@@ -65,8 +65,11 @@ namespace Game.Runtime.Player
 
                 return;
             }
-            if (Item != null)
-                Item.InteractWithPlayer();
+            if (InteractableObjects.Count != 0)
+            {
+                InteractableObjects[0].gameObject.GetComponent<PickableItem>().InteractWithPlayer();
+                InteractableObjects.RemoveAt(0);
+            }
         }
 
         public void Drop()

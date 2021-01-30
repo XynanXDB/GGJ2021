@@ -42,12 +42,13 @@ public class GameManager : MonoBehaviour
     public Player playerObject;
 
     int[] GFBehaviour = new int[3];
-    List<string> itemInventory = new List<string>();
+    public List<string> itemInventory = new List<string>();
 
     Dictionary<string, GameObject> SpawnedObjectDic = new Dictionary<string, GameObject>();
+
     public static GameManager m_instance;
     InteractableObjects TempItem;
-
+    InteractableObjects CurrentlyHolding;
 
     private void Awake()
     {
@@ -126,10 +127,10 @@ public class GameManager : MonoBehaviour
             obj.transform.rotation = spawnPoint.rotation;
             obj.name = item.ItemName;
             obj.transform.GetChild(0).gameObject.SetActive(false);
-            yield return null;
-            SpawnedObjectDic.Add(item.ItemName, obj);
+            SpawnedObjectDic.Add(obj.name, obj);
             yield return null;
         }
+
     }
 
     InteractableObjects FindItemInQuestion(string ItemName)
@@ -149,58 +150,77 @@ public class GameManager : MonoBehaviour
         itemInventory.Add(HoldingItem.ItemName);
         if(HoldingItem.ItemRemove != "")
         {
-            DropItem(HoldingItem.ItemRemove);
+            RemoveItem(HoldingItem.ItemRemove);
         }
 
         if(HoldingItem.ItemRemove2 != "")
         {
-            DropItem(HoldingItem.ItemRemove2);
+            RemoveItem(HoldingItem.ItemRemove2);
         }
     }
-    public void DropItem(string ItemName) // only used for item that are being Held 
+
+    public void RemoveItem(string ItemName) // remove from List
     {
         TempItem = FindItemInQuestion(ItemName);
-        if(TempItem.ItemName != null)
+
+        if (TempItem.ItemName != null)
             itemInventory.Remove(TempItem.ItemName);
-    }
-    public void InteractWithItem(string ItemName) // use this to see if Item Should be attached to player hand
-    {
-        TempItem = FindItemInQuestion(ItemName);
+
         if(TempItem.canHold)
         {
-            // attach to arm
-            AddItem(TempItem);
+            // Drop Item
+            DropItem(TempItem);
+        }
+    }
+
+    public void DropItem(InteractableObjects Item) // only used for item that are being Held 
+    {
+        GameObject obj = SpawnedObjectDic[Item.ItemName];
+        obj.GetComponent<Collider>().enabled = true;
+        obj.GetComponent<Rigidbody>().detectCollisions = true;
+        obj.GetComponent<Rigidbody>().useGravity = true;
+        obj.GetComponent<Rigidbody>().isKinematic = false;
+
+        obj.transform.parent = null;
+    }
+    public void InteractWithItem(string ItemName) // use this to see if Item Should be attached to player hand 
+    {
+        // system will always call this for interaction ===========================
+
+        if (itemInventory.Contains(ItemName))
+        {
+            return;
+        }
+
+        TempItem = FindItemInQuestion(ItemName);
+        if (TempItem.ItemName == CurrentlyHolding.ItemName)
+        {
+            // CAll UI Hands are full; PLS drop item with Left Shit
+            return;
+        }
+        if (TempItem.canHold)
+        {
+            CurrentlyHolding = TempItem;
             GameObject obj = SpawnedObjectDic[TempItem.ItemName];
             obj.transform.parent = TempItem.HoldItemPos;
             obj.transform.localPosition = Vector3.zero;
             obj.transform.localEulerAngles = Vector3.zero;
+            obj.GetComponent<Collider>().enabled = false;
+            obj.GetComponent<Rigidbody>().detectCollisions = false;
+            obj.GetComponent<Rigidbody>().useGravity = false;
+            obj.GetComponent<Rigidbody>().isKinematic = true;
+
+            // attach to arm
         }
-        else
+        else if(TempItem.disableOnUse)
         {
             // item that either just disappear or interact with ( sprays/ clothing )
-            AddItem(TempItem);
             GameObject obj = SpawnedObjectDic[TempItem.ItemName];
-            if (TempItem.disableOnUse)
-            {
-                // use for phone wallet house keys
-                obj.SetActive(false);
-            }
-            else
-            {
-                // disable the spray so it wont keep firing
-                StartCoroutine(DisableObjectTemporary(obj));
-            }
+            // use for phone wallet house keys
+            obj.SetActive(false);
         }
+        AddItem(TempItem);
     }
-
-    IEnumerator DisableObjectTemporary (GameObject obj)
-    {
-        obj.GetComponent<PickableItem>().enabled = false;
-        yield return new WaitForSeconds(1.0f);
-        obj.GetComponent<PickableItem>().enabled = true;
-        yield return null;
-    }
-
 
     public void PopUpUI(string ItemName)
     {
