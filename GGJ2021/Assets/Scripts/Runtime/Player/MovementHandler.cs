@@ -107,7 +107,7 @@ namespace Game.Runtime.Player
                 Debug.Log("CW");
                 while (TiltElapsedTime < 1)
                 {
-                    TiltElapsedTime += Time.deltaTime;
+                    TiltElapsedTime += 2* Time.deltaTime;
                     MeshToAngle.localEulerAngles = Vector3.Lerp(Vector3.back * 30, Vector3.zero, TiltElapsedTime);
                     yield return new WaitForEndOfFrame();
                 }
@@ -117,7 +117,7 @@ namespace Game.Runtime.Player
                 Debug.Log("CCW");
                 while (TiltElapsedTime < 1)
                 {
-                    TiltElapsedTime += Time.deltaTime;
+                    TiltElapsedTime += 2* Time.deltaTime;
                     MeshToAngle.localEulerAngles = Vector3.Lerp(Vector3.forward * 30, Vector3.zero, TiltElapsedTime);
                     yield return new WaitForEndOfFrame();
                 }
