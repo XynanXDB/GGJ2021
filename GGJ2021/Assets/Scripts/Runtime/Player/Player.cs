@@ -1,14 +1,20 @@
-﻿using Game.Runtime.Input;
+﻿using Game.Runtime.Dialogue;
+using Game.Runtime.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Game.Runtime.Player
 {
-    public class Player : MonoBehaviour, RLWControls.IGameActions
+    public class Player : MonoBehaviour, RLWControls.IGameActions, ITalkable
     {
-        private InputHandler InputHandler;
         [SerializeField] protected MovementHandler MovementHandler;
         [SerializeField] protected InteractionHandler InteractionHandler;
+        private InputHandler InputHandler;
+        
+        [SerializeField] protected FSpeakerInfo SpeakerInfo = new FSpeakerInfo()
+        {
+            Name = "JB",
+        };
         
         void Awake()
         {
@@ -29,5 +35,13 @@ namespace Game.Runtime.Player
             if (context.performed)
                 InteractionHandler.Interact();
         }
+
+        public void OnDrop(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+                InteractionHandler.Drop();
+        }
+
+        public FSpeakerInfo GetSpeakerInfo() => SpeakerInfo;
     }
 }

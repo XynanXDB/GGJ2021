@@ -62,5 +62,10 @@ namespace Game.Runtime.Player
             if (Item != null)
                 Item.InteractWithPlayer();
         }
+
+        public void Drop()
+        {
+            Debug.Log("Drop");
+        }
     }
 }

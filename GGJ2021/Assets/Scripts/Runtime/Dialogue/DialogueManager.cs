@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using Game.Utility;
+using UnityEngine;
 using Yarn.Unity;
 
 namespace Game.Runtime.Dialogue
@@ -22,18 +25,45 @@ namespace Game.Runtime.Dialogue
         [SerializeField] protected DialogueRunner DialogueRunner;
         [SerializeField] protected DialogueUI DialogueUI;
         
-        private 
+        private OneParamSignature<YarnCommandPacket> OnReceiveSetSpeaker;
+        private List<ITalkable> JoinedSpeakers;
+        
         void Awake()
         {
-            DontDestroyOnLoad(this);
-
             if (_DialogueManager == null)
                 _DialogueManager = this;
-            else
-                Destroy(_DialogueManager);
+
+            JoinedSpeakers = new List<ITalkable>();
+            
+            DialogueRunner.AddCommandHandler("SetSpeaker", SetSpeaker);
+            
+            
+            DialogueUI.onDialogueEnd.AddListener(OnDialogueEnd);
         }
 
-        public void StartDialogue(string YarnAssetName, string StartNodeName = "Start")
+        void OnDialogueEnd()
+        {
+            DialogueRunner.Clear();
+            JoinedSpeakers?.Clear();
+        }
+
+        void OnDestroy() => OnReceiveSetSpeaker = null;
+
+        public void InitiateDialogue(string YarnAssetName, List<ITalkable> InSpeakers = null,
+            string StartNodeName = "Start")
+        {
+            JoinedSpeakers = InSpeakers;
+
+            if (InSpeakers != null)
+            {
+                foreach (ITalkable I in InSpeakers)
+                    JoinConversation(I);
+            }
+            
+            StartDialogue(YarnAssetName, StartNodeName);
+        }
+        
+        void StartDialogue(string YarnAssetName, string StartNodeName = "Start")
         {
             YarnProgram YarnAsset = DialogueDB.GetYarnAssetByKey(YarnAssetName);
             if (YarnAsset != null)
@@ -42,9 +72,27 @@ namespace Game.Runtime.Dialogue
                 DialogueRunner.StartDialogue(StartNodeName);
             }
             else
-            {
                 Debug.LogError("YarnAsset not found");
-            }
         }
+
+        void JoinConversation(ITalkable Speaker)
+        {
+            FSpeakerInfo SpeakerInfo = Speaker.GetSpeakerInfo();
+            //TODO Add speaker to the UI.
+        }
+
+        #region CommandHandlers
+        void SetSpeaker(string[] Params)
+        {
+            string[] Commands = {null, null};
+
+            for (int i = 0; i < Params.Length; i++)
+                Commands[i] = Params[i];
+            
+            OnReceiveSetSpeaker?.Invoke(new YarnCommandPacket(Commands[0], Commands[1]));
+        }
+        
+
+        #endregion
     }
 }

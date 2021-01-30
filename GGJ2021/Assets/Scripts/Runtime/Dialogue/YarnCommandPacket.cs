@@ -1,9 +1,9 @@
 ﻿namespace Game.Runtime.Dialogue
 {
-    public struct YarnCommandPacket
+    public readonly struct YarnCommandPacket
     {
-        public string Name;
-        public string Action;
+        public readonly string Name;
+        public readonly string Action;
 
         public YarnCommandPacket(string InName, string InAction)
         {

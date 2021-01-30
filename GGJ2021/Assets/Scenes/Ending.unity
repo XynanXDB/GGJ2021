@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f739b8d5d2114d028f51e42c2caf79d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DialogueDB: {fileID: 0}
+  DialogueDB: {fileID: 11400000, guid: b35ec93051a0cad47ba7dd9f06cda871, type: 2}
   DialogueRunner: {fileID: 870470032}
 --- !u!4 &870470031
 Transform:
@@ -206,28 +206,49 @@ MonoBehaviour:
   m_GameObject: {fileID: 870470029}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 610c541718d694070a21327d1ae62e75, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b4bfa33b67941849d143cb437b09fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   defaultVariables:
-  - name: 
-    value: 
-    type: 0
-  - name: 
-    value: 
-    type: 0
-  - name: 
-    value: 
-    type: 0
-  - name: 
-    value: 
-    type: 0
-  - name: 
-    value: 
-    type: 0
-  - name: 
-    value: 
-    type: 0
+  - name: Phone
+    value: 0
+    type: 2
+  - name: HouseKeys
+    value: 0
+    type: 2
+  - name: Wallet
+    value: 0
+    type: 2
+  - name: ClothesFormal
+    value: 0
+    type: 2
+  - name: ClothesSmart
+    value: 0
+    type: 2
+  - name: ClothesCasual
+    value: 0
+    type: 2
+  - name: SmellShower
+    value: 0
+    type: 2
+  - name: SmellDeodorant
+    value: 0
+    type: 2
+  - name: SmellPerfume
+    value: 0
+    type: 2
+  - name: GiftBear
+    value: 0
+    type: 2
+  - name: GiftBook
+    value: 0
+    type: 2
+  - name: GiftChocolate
+    value: 0
+    type: 2
+  - name: ComeEarly
+    value: 0
+    type: 2
   debugTextView: {fileID: 0}
 --- !u!1 &1014286639
 GameObject:
