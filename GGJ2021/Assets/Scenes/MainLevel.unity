@@ -209,18 +209,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1062099220, guid: d1902f1fb6b27ae40ab99acc2ab7c4e1, type: 3}
-      propertyPath: FlipForce
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1760805303853535920, guid: d1902f1fb6b27ae40ab99acc2ab7c4e1, type: 3}
-      propertyPath: m_Name
-      value: InteractionBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 8121724279523315660, guid: d1902f1fb6b27ae40ab99acc2ab7c4e1, type: 3}
-      propertyPath: RotationReferenceTransform
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8121724279523315698, guid: d1902f1fb6b27ae40ab99acc2ab7c4e1, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -268,6 +256,10 @@ PrefabInstance:
     - target: {fileID: 8121724279523315699, guid: d1902f1fb6b27ae40ab99acc2ab7c4e1, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121724279547122907, guid: d1902f1fb6b27ae40ab99acc2ab7c4e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1902f1fb6b27ae40ab99acc2ab7c4e1, type: 3}
@@ -1135,6 +1127,7 @@ MonoBehaviour:
     canHold: 0
     disableOnUse: 0
     ItemRemove: 
+    ItemRemove2: 
     spawnLocale:
     - {fileID: 1563805425}
     HoldItemPos: {fileID: 0}

@@ -5,10 +5,12 @@ using UnityEngine;
 public class PickableItem : MonoBehaviour
 {
     GameManager manager;
+    Vector3 popUpOriSize;
 
     private void Start()
     {
         manager = GameManager.m_instance;
+        popUpOriSize = transform.GetChild(0).transform.localScale;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,11 +38,13 @@ public class PickableItem : MonoBehaviour
 
     void PopUpUI()
     {
+        transform.GetChild(0).transform.localScale = popUpOriSize;
         manager.PopUpUI(gameObject.name);
     }
 
     void PopDownUI()
     {
+        transform.GetChild(0).transform.localScale = popUpOriSize;
         manager.PopDownUI(gameObject.name);
     }
 }

@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
         public bool canHold;
         public bool disableOnUse;
         public string ItemRemove;
+        public string ItemRemove2;
         public List<Transform> spawnLocale;
         public Transform HoldItemPos;
     }    
@@ -86,11 +87,17 @@ public class GameManager : MonoBehaviour
         {
             DropItem(HoldingItem.ItemRemove);
         }
+
+        if(HoldingItem.ItemRemove2 != "")
+        {
+            DropItem(HoldingItem.ItemRemove2);
+        }
     }
     public void DropItem(string ItemName) // only used for item that are being Held 
     {
         TempItem = FindItemInQuestion(ItemName);
-        itemInventory.Remove(TempItem.ItemName);
+        if(TempItem.ItemName != null)
+            itemInventory.Remove(TempItem.ItemName);
     }
     public void InteractWithItem(string ItemName) // use this to see if Item Should be attached to player hand
     {
