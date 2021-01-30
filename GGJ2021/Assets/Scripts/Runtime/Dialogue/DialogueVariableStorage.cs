@@ -19,6 +19,7 @@ namespace Game.Runtime.Dialogue
         private const string GiftBear = "GiftBear";
         private const string GiftBook = "GiftBook";
         private const string GiftChocolate = "GiftChocolate";
+        private const string ComeEarly = "ComeEarly";
 
         public void RetrieveChecklist()
         {
@@ -74,6 +75,10 @@ namespace Game.Runtime.Dialogue
                     
                     case GiftChocolate:
                         SetValue(GiftChocolate, true);
+                        break;
+                    
+                    case ComeEarly:
+                        SetValue(ComeEarly, true);
                         break;
                 }
             }
