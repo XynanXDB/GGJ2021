@@ -61,5 +61,13 @@ namespace Game.Runtime.Player
                     break;
             }
         }
+        public void EnableMovement()
+        {
+            MovementHandler.enabled = true;
+        }
+        public void DisableMovement()
+        {
+            MovementHandler.enabled = false;
+        }
     }
 }
