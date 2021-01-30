@@ -15,6 +15,8 @@ namespace Game.Runtime.Player
         Coroutine LookAtLerpRoutine;
         //Coroutine TiltRoutine;
         Vector3 FinalDirection;
+        Vector3 NextDirection;
+        Rigidbody rigidToMove;
         //float PrevRotationY;
         //float CurrentRotationY;
         //float TiltElapsedTime;
@@ -34,6 +36,7 @@ namespace Game.Runtime.Player
         void Awake()
         {
             TransformToMove = transform;
+            rigidToMove = TransformToMove.GetComponent<Rigidbody>();
             if (LookAtLerpRoutine == null)
                 LookAtLerpRoutine = StartCoroutine(SmoothRotate());
             FinalDirection = Vector3.left;
@@ -51,12 +54,13 @@ namespace Game.Runtime.Player
                 
             Transform T = transform;
             Quaternion OffsetRotation = Quaternion.AngleAxis(45.0f, Vector3.up);
-            Vector3 Vertical = OffsetRotation * T.forward * (_MovementVector.z * MovementSpeed * Time.deltaTime);
-            Vector3 Horizontal = OffsetRotation * T.right * (_MovementVector.x * MovementSpeed * Time.deltaTime);
+            Vector3 Vertical = OffsetRotation * T.forward * (_MovementVector.z * Time.deltaTime);
+            Vector3 Horizontal = OffsetRotation * T.right * (_MovementVector.x * Time.deltaTime);
             FinalDirection = (Vertical + Horizontal).normalized;
-
+            NextDirection = TransformToMove.position + FinalDirection * Time.deltaTime * MovementSpeed;
+            rigidToMove.MovePosition(NextDirection);
             //CurrentRotationY = MeshToRotate.localEulerAngles.y;
-            TransformToMove.Translate(Vertical + Horizontal, Space.World);
+            //TransformToMove.Translate(Vertical + Horizontal, Space.World);
             // filter for Previous Value due to 180 limit on rotation
             //if (CurrentRotationY < 0 && PrevRotationY > 0)
             //    PrevRotationY = -360 + PrevRotationY;
