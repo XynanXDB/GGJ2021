@@ -8,6 +8,7 @@ namespace Game.Runtime.Player
     {
         [Tooltip("Translation")]
         [SerializeField] protected float MovementSpeed = 5.0f;
+        [SerializeField] protected float MaxMovementSpeed = 8.0f;
         [SerializeField] protected Transform MeshToRotate;
         [SerializeField] protected Transform MeshToAngle;
         private Vector3 _MovementVector;
@@ -33,6 +34,9 @@ namespace Game.Runtime.Player
             set { _MovementVector.z = value; }
         }
 
+        public Vector3 GetVelocity => rigidToMove.velocity;
+        public float GetMaxMovementSpeed => MaxMovementSpeed;
+
         void Awake()
         {
             TransformToMove = transform;
@@ -47,17 +51,12 @@ namespace Game.Runtime.Player
 
         void Update()
         {
-            if (_MovementVector.sqrMagnitude <= 0.0f)
-            {
-                return;
-            }
-                
             Transform T = transform;
             Quaternion OffsetRotation = Quaternion.AngleAxis(45.0f, Vector3.up);
             Vector3 Vertical = OffsetRotation * T.forward * (_MovementVector.z * Time.deltaTime);
             Vector3 Horizontal = OffsetRotation * T.right * (_MovementVector.x * Time.deltaTime);
             FinalDirection = (Vertical + Horizontal).normalized;
-            NextDirection = TransformToMove.position + FinalDirection * Time.deltaTime * MovementSpeed;
+            NextDirection = TransformToMove.position + FinalDirection * (Time.deltaTime * MovementSpeed);
             rigidToMove.MovePosition(NextDirection);
             //CurrentRotationY = MeshToRotate.localEulerAngles.y;
             //TransformToMove.Translate(Vertical + Horizontal, Space.World);
