@@ -9,7 +9,7 @@ namespace Game.Runtime.Player
     {
         [SerializeField] protected float FlipForce = 10.0f;
         [SerializeField] protected float ExplosionRadius = 2.0f;
-        [SerializeField] protected float UpwardModifier = 2.0f;
+        [SerializeField] protected float UpwardModifier = 1.0f;
 
         private List<Collider> FlippableObjects;
         private List<Collider> InteractableObjects;
@@ -52,7 +52,7 @@ namespace Game.Runtime.Player
                     if (RB == null)
                         continue;
 
-                    RB.AddExplosionForce(FlipForce, transform.position, ExplosionRadius, UpwardModifier,
+                    RB.AddExplosionForce(FlipForce, transform.parent.position, ExplosionRadius, UpwardModifier,
                         ForceMode.Impulse);
                 }
 
