@@ -8,6 +8,7 @@ TagManager:
   - Flippable
   - Interactable
   - UIManager
+  - GameInstance
   layers:
   - Default
   - TransparentFX
