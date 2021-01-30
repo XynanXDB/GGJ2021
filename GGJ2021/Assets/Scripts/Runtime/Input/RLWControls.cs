@@ -41,6 +41,14 @@ public class @RLWControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Drop"",
+                    ""type"": ""Button"",
+                    ""id"": ""991a6c43-d24f-4e92-9376-0621bb2311e7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -118,6 +126,17 @@ public class @RLWControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""378c7343-932e-44de-a05f-ea286673df2f"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -278,6 +297,7 @@ public class @RLWControls : IInputActionCollection, IDisposable
         m_Game_UpDown = m_Game.FindAction("UpDown", throwIfNotFound: true);
         m_Game_LeftRight = m_Game.FindAction("LeftRight", throwIfNotFound: true);
         m_Game_Interact = m_Game.FindAction("Interact", throwIfNotFound: true);
+        m_Game_Drop = m_Game.FindAction("Drop", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Click = m_UI.FindAction("Click", throwIfNotFound: true);
@@ -337,6 +357,7 @@ public class @RLWControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Game_UpDown;
     private readonly InputAction m_Game_LeftRight;
     private readonly InputAction m_Game_Interact;
+    private readonly InputAction m_Game_Drop;
     public struct GameActions
     {
         private @RLWControls m_Wrapper;
@@ -344,6 +365,7 @@ public class @RLWControls : IInputActionCollection, IDisposable
         public InputAction @UpDown => m_Wrapper.m_Game_UpDown;
         public InputAction @LeftRight => m_Wrapper.m_Game_LeftRight;
         public InputAction @Interact => m_Wrapper.m_Game_Interact;
+        public InputAction @Drop => m_Wrapper.m_Game_Drop;
         public InputActionMap Get() { return m_Wrapper.m_Game; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -362,6 +384,9 @@ public class @RLWControls : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_GameActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnInteract;
+                @Drop.started -= m_Wrapper.m_GameActionsCallbackInterface.OnDrop;
+                @Drop.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnDrop;
+                @Drop.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnDrop;
             }
             m_Wrapper.m_GameActionsCallbackInterface = instance;
             if (instance != null)
@@ -375,6 +400,9 @@ public class @RLWControls : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Drop.started += instance.OnDrop;
+                @Drop.performed += instance.OnDrop;
+                @Drop.canceled += instance.OnDrop;
             }
         }
     }
@@ -449,6 +477,7 @@ public class @RLWControls : IInputActionCollection, IDisposable
         void OnUpDown(InputAction.CallbackContext context);
         void OnLeftRight(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnDrop(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
