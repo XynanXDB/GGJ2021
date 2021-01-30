@@ -32,5 +32,10 @@ namespace Game.Runtime.UI
             if (FocusedGO != null)
                 EventSystem.current.SetSelectedGameObject(FocusedGO);
         }
+
+        public void PostInteractNotification(string ItemName)
+        {
+            
+        }
     }
 }
