@@ -1,8 +1,12 @@
-﻿using Game.Runtime.Player;
+﻿using System;
+using Game.Runtime.Player;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Runtime.UI;
+using Game.Utility;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -40,7 +44,8 @@ public class GameManager : MonoBehaviour
     public GameObject TimerUI;
     public Text TimerText;
     public Player playerObject;
-
+    private VoidSignature OnLimitedTime;
+    
     int[] GFBehaviour = new int[3];
     public List<string> itemInventory = new List<string>();
 
@@ -50,12 +55,21 @@ public class GameManager : MonoBehaviour
     InteractableObjects TempItem;
     InteractableObjects CurrentlyHolding;
 
+    public OneParamSignature<string> PostInteractNotification;
+
     private void Awake()
     {
         if (m_instance == null)
         {
             m_instance = this;
         }
+
+        PostInteractNotification = UIManager.UUIManager.PostInteractNotification;
+    }
+    void OnDestroy()
+    {
+        PostInteractNotification = null;
+        OnLimitedTime = null;
     }
 
     private void Start()
@@ -69,7 +83,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SpawnObjects());
         // Supposely Coroutine Goes Here
 
-        // StartCoroutine(GameTimerCoroutine());
+        StartCoroutine(GameTimerCoroutine());
         
     }
 
@@ -121,6 +135,25 @@ public class GameManager : MonoBehaviour
         TimerText.text = "Rush";
         yield return new WaitForSeconds(1.0f);
 
+        timeStart = Time.time;
+        float TimeLeft = 10.0f;
+        float Lifetime = Time.time - timeStart;
+        double RemainingTime = 0.0f;
+        
+        while (Lifetime < TotalTime - Lifetime)
+        {
+            RemainingTime = TotalTime - Time.time + timeStart;
+            TimerText.text = RemainingTime.ToString("#.##");
+
+            if (Math.Abs(RemainingTime - TimeLeft) < float.Epsilon)
+            {
+                OnLimitedTime?.Invoke();
+                OnLimitedTime = null;
+            }
+            
+            yield return null;
+        }
+
         // the main countdown is here using the   float of ~~~ CountDownTime  ~~~~ to set how long the game to run for
 
         // will do
@@ -167,6 +200,8 @@ public class GameManager : MonoBehaviour
     public void AddItem(InteractableObjects HoldingItem) // upon picking up item just add to list
     {
         itemInventory.Add(HoldingItem.ItemName);
+        PostInteractNotification?.Invoke(HoldingItem.ItemName);
+        
         if(HoldingItem.ItemRemove != "")
         {
             RemoveItem(HoldingItem.ItemRemove);
