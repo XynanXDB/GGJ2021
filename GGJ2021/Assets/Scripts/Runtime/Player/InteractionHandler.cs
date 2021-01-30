@@ -52,6 +52,13 @@ namespace Game.Runtime.Player
                     if (RB == null)
                         continue;
 
+                    if (RB.isKinematic)
+                    {
+                        RB.isKinematic = false;
+                        RB.useGravity = true;
+                        RB.constraints = RigidbodyConstraints.None;
+                    }
+                    
                     RB.AddExplosionForce(FlipForce, transform.parent.position, ExplosionRadius, UpwardModifier,
                         ForceMode.Impulse);
                 }
