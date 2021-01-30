@@ -221,8 +221,8 @@ GameObject:
   - component: {fileID: -6203730404053761359}
   - component: {fileID: -276438006925340668}
   m_Layer: 0
-  m_Name: BOOK
-  m_TagString: Untagged
+  m_Name: basePrefab
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

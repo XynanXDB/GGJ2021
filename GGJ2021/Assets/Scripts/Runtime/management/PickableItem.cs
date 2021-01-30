@@ -33,6 +33,7 @@ public class PickableItem : MonoBehaviour
 
     public void InteractWithPlayer() // use this to see if Item Should be attached to player hand
     {
+        Debug.Log("Interact");
         manager.InteractWithItem(gameObject.name);
     }
 

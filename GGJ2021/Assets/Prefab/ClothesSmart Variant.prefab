@@ -81,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6730198468840599877, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
       propertyPath: m_Name
-      value: ClothesSmart
+      value: ClothesSmart Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8156222856990623751, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
       propertyPath: m_SizeDelta.x
@@ -89,15 +89,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8360096185317323652, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9238797
+      value: 0.9396927
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360096185317323652, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8360096185317323652, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.38268322
+      value: 0.3420201
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360096185317323652, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8360096185317323652, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 45
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}

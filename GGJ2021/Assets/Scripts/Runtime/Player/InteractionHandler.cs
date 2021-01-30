@@ -12,7 +12,7 @@ namespace Game.Runtime.Player
         [SerializeField] protected float UpwardModifier = 1.0f;
 
         private List<Collider> FlippableObjects;
-        private List<Collider> InteractableObjects;
+        public List<Collider> InteractableObjects;
 
         private const string Flippable = "Flippable";
         private const string Interactable = "Interactable";
@@ -65,7 +65,6 @@ namespace Game.Runtime.Player
 
                 return;
             }
-            
             if (Item != null)
                 Item.InteractWithPlayer();
         }
