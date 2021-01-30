@@ -316,7 +316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8016965e7b0488b47b4ff78a38efcfd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickUpUI: {fileID: 0}
 --- !u!54 &-276438006925340668
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -411,4 +410,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Phone
+  m_Text: BOOK PREFAB

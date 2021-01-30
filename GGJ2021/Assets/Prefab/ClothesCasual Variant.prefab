@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8070222017848048968
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -276438006925340668, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -276438006925340668, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: -276438006925340668, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636249707138814116, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 19.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636249707138814116, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 6.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4854680238713164821, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5768295452735682833, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_Text
+      value: 'ClothesCasual '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834145785214948526, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834145785214948526, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.011
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834145785214948526, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.723
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834145785214948526, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834145785214948526, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834145785214948526, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834145785214948526, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834145785214948526, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834145785214948526, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834145785214948526, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834145785214948526, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6730198468840599877, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_Name
+      value: ClothesCasual
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156222856990623751, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360096185317323652, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9595215
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360096185317323652, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.28163555
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360096185317323652, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 32.716
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6e4551f051af7d545a7c0a55d3cb1648, type: 3}

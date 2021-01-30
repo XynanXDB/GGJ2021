@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using Game.Runtime.Player;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,6 +25,23 @@ public class GameManager : MonoBehaviour
     public float popSpeed = 4f;
     public AnimationCurve PopUpAnim;
 
+    [Header("GF Bio UI")]
+    public GameObject GFBioObj;
+    public Text BioText1;
+    public Text BioText2;
+    public Text BioText3;
+    public string[] ClothingBIo = new string[3];
+    public string[] SmellBio = new string[3];
+    public string[] GiftBio = new string[3];
+
+    [Header("Game Timer Settings")]
+    public float CountDownTime;
+    public double TotalTime;
+    public GameObject TimerUI;
+    public Text TimerText;
+    public Player playerObject;
+
+    int[] GFBehaviour = new int[3];
     List<string> itemInventory = new List<string>();
 
     Dictionary<string, GameObject> SpawnedObjectDic = new Dictionary<string, GameObject>();
@@ -48,6 +67,51 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(SpawnObjects());
         
+    }
+
+    IEnumerator GameTimerCoroutine()
+    {
+        yield return null;
+        RandomGF(); 
+        yield return null;
+        int ProfileInt = GFBehaviour[0];
+        BioText1.text = ClothingBIo[ProfileInt-1];
+        yield return null;
+        ProfileInt = GFBehaviour[1];
+        BioText2.text = SmellBio[ProfileInt-1];
+        yield return null;
+        ProfileInt = GFBehaviour[2];
+        BioText3.text = GiftBio[ProfileInt-1];
+        yield return null;
+        playerObject.DisableMovement();
+
+        float timeStart = Time.time;
+
+        while((Time.time - timeStart) < (CountDownTime/3) )
+        {
+            TimerText.text = "Ready";
+            yield return null;
+        }
+        timeStart = Time.time;
+        while ((Time.time - timeStart) < (CountDownTime / 3))
+        {
+            TimerText.text = "Ready";
+            yield return null;
+        }
+        timeStart = Time.time;
+        while ((Time.time - timeStart) < (CountDownTime / 3))
+        {
+            TimerText.text = "Steady";
+            yield return null;
+        }
+
+        playerObject.EnableMovement();
+        //Count down begins and play game
+
+        TimerText.text = "Rush";
+        yield return new WaitForSeconds(1.0f);
+
+
     }
 
     IEnumerator SpawnObjects()
@@ -188,9 +252,27 @@ public class GameManager : MonoBehaviour
         return itemInventory;
     }
 
+    public void CameEarly()
+    {
+        itemInventory.Add("ComeEarly");
+    }
+
     public void ClearList()
     {
         if (itemInventory.Count != 0)
             itemInventory.Clear();
+    }
+
+    public void RandomGF()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            GFBehaviour[i] = Random.Range(1, 4);
+        }
+    }
+
+    public int[] GetGFProfile()
+    {
+        return GFBehaviour;
     }
 }

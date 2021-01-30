@@ -29,5 +29,15 @@ namespace Game.Runtime.Player
             if (context.performed)
                 InteractionHandler.Interact();
         }
+
+        public void DisableMovement()
+        {
+            MovementHandler.enabled = false;
+        }
+
+        public void EnableMovement()
+        {
+            MovementHandler.enabled = true;
+        }
     }
 }
