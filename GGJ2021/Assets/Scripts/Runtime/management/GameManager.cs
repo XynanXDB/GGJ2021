@@ -67,6 +67,9 @@ public class GameManager : MonoBehaviour
     void StartGame()
     {
         StartCoroutine(SpawnObjects());
+        // Supposely Coroutine Goes Here
+
+        // StartCoroutine(GameTimerCoroutine());
         
     }
 
@@ -86,6 +89,10 @@ public class GameManager : MonoBehaviour
         yield return null;
         playerObject.DisableMovement();
 
+        // am using this method so instead of += Time.delta time which is frame timing 
+        //i subtract based on how long the game is running
+
+        // this part to change the Text of the timer to be like ready, set,  go
         float timeStart = Time.time;
 
         while((Time.time - timeStart) < (CountDownTime/3) )
@@ -106,12 +113,24 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
+        // Player can move already and start running around
+
         playerObject.EnableMovement();
         //Count down begins and play game
 
         TimerText.text = "Rush";
         yield return new WaitForSeconds(1.0f);
 
+        // the main countdown is here using the   float of ~~~ CountDownTime  ~~~~ to set how long the game to run for
+
+        // will do
+        // TimerText.text = TotalTime     as ~~~~ Total Time ~~~~~ is a double just 
+        //                                      need convert to string here or something more faster and light weight
+
+        // then end here after duration over  ~~~ CountDownTime ~~~~~
+
+        // if early end run this will add the run early in
+        CameEarly();
 
     }
 

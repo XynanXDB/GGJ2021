@@ -58,4 +58,5 @@ public class PickableItem : MonoBehaviour
         transform.GetChild(0).transform.localScale = popUpOriSize;
         manager.PopDownUI(gameObject.name);
     }
+
 }
