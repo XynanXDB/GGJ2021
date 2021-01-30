@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Runtime.Girl
 {
-    public class NPC : MonoBehaviour, ITalkable
+    public class Girl : MonoBehaviour, ITalkable
     {
         [SerializeField] protected FSpeakerInfo SpeakerInfo = new FSpeakerInfo()
         {

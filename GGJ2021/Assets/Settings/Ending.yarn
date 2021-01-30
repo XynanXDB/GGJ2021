@@ -1,0 +1,257 @@
+title: Start
+tags: 
+colorID: 0
+position: -1099,-1063
+---
+[[Girl.ComeEarly]]
+===
+title: Girl.ComeEarly
+tags: 
+colorID: 0
+position: -1101,-804
+---
+<< if $ComeEarly is true >>
+    Ohhhh Hello?! I'm surprised to see you reach here early.
+    Not everyday you could find a a guy who arrive early for their date, let alone being on time.
+    << set $LovePoints to $LovePoints+1 >> 
+<< else >>
+    Ow, you made it right on time.
+<< endif >>
+ [[Girl.Naked]]
+===
+title: Girl.Naked
+tags: 
+colorID: 0
+position: -1101,-558
+---
+<< if $ClothesFormal is false && $ClothesSmart is false && $ClothesCasual is false>> 
+    This better not be some new fashion trend. 'Cause nobody is going to walk around in their undies like you.
+    << set $LovePoints to $LovePoints - 1>> 
+<< endif >>
+ [[Girl.DontSmellGood]]
+===
+title: Girl.DontSmellGood
+tags: 
+colorID: 0
+position: -862,-556
+---
+<< if $SmellShower is false && $SmellDeodorant is false && $SmellPerfume is false >> 
+    Haiya~~~~ what is that stench! Which stinky vault did you came out from? You smell like a dead rat that died centuries ago. No wonder Aunty Helen dump you.
+    << set $LovePoints to $LovePoints - 1>> 
+<< endif >>
+ [[Girl.Phone]]
+===
+title: Girl.Phone
+tags: 
+colorID: 0
+position: -861,-804
+---
+<< if $Phone is true >>
+    Actually I was trying to call you just now but you didn't answer.
+    You forgot to bring your phone out didn't you? Seriously stop losing your phone.
+    << set $LovePoint to $LovePoint - 1>>
+<< else >>
+    Hey, since you just got a new phone why not take a selfie with it?
+    << set $LovePoint to $LovePoint + 1>>
+<< endif >>
+ [[Girl.Formal]]
+===
+title: Girl.Formal
+tags: 
+colorID: 0
+position: -859,-1062
+---
+<< if $ProfileClothes is 1>>
+    << if $ClothesFormal is true>> 
+        Ow wow, I Like your suit. It goes well with you face mask.
+        << set $LovePoint to $LovePoint + 1>>
+    << else >>
+        You know you should dress up a bit more formal when you are going out. You gotta look more presentable.
+        << set $LovePoint to $LovePoint - 1>>
+    << endif >> 
+<< endif >>
+[[ Girl.Smart ]]
+===
+title: Girl.Smart
+tags: 
+colorID: 0
+position: -607,-1058
+---
+<< if $ProfileClothes is 2>>
+    << if $ClothesSmart is true>> 
+        I like the colour of your shirt. It's my favourite colour. 
+        It's nice and refreshing to see someone trying out some new colours.
+        Especially those pink shoes.
+        It matches you so well.
+        << set $LovePoint to $LovePoint + 1>>
+    << else >>
+        On the topic of clothing, you could at least put in a bit effort to dress up.
+        Don't need to be all format you know. Just something smart will do.
+        << set $LovePoint to $LovePoint - 1>>
+    << endif >> 
+<< endif >>
+[[ Girl.Casual ]]
+===
+title: Girl.Casual
+tags: 
+colorID: 0
+position: -609,-801
+---
+<< if $ProfileClothes is 3>>
+    << if $ClothesCasual is true>> 
+        I am the type of girl who is easy going and likes to do stuff impromptuly.
+        Since you are already in you casual clothes, you wanna take a stroll in the wasteland later?
+        << set $LovePoint to $LovePoint + 1>>
+    << else >>
+        I didn't know tonight was a casual night. Man, I should've worn something else instead.
+        You could've told me atleast.
+        << set $LovePoint to $LovePoint - 1>>
+    << endif >> 
+<< endif >>
+[[ Girl.Shower]]
+===
+title: Girl.Shower
+tags: 
+colorID: 0
+position: -607,-557
+---
+<< if $ProfileSmell is 1>>
+    << if $SmellShower is true>> 
+        Sorry but I can't help but notice that you smell exceptionally manly,
+        as if you just came out of the shower. And you smell really nice.
+        << set $LovePoint to $LovePoint + 1>>
+    << else >>
+        Hey, have you heard of something called a shower?
+        You could try it.
+        A simple shower can sometimes works wonders.
+        << set $LovePoint to $LovePoint - 1>>
+    << endif >> 
+<< endif >>
+[[ Girl.Deodorant ]]
+===
+title: Girl.Deodorant
+tags: 
+colorID: 0
+position: -354,-559
+---
+<< if $ProfileSmell is 2>>
+    << if $SmellDeodorant is true>> 
+        Hey just curious, judging from your smell of deodorant do you workout a lot in the wastelands?
+        'Cause I like the smell of guys who electrify me.
+        << set $LovePoint to $LovePoint + 1>>
+    << else >>
+        No hard feelings but, you should probably try out some deodorant to help mask you body odor.
+        << set $LovePoint to $LovePoint - 1>>
+    << endif >> 
+<< endif >>
+[[ Girl.Perfume ]]
+===
+title: Girl.Perfume
+tags: 
+colorID: 0
+position: -353,-804
+---
+<< if $ProfileSmell is 3>>
+    << if $SmellPerfume is true>> 
+        Ow wow you smell great. You are the nicest smelling human I have ever met and I can't get enough of it.
+        << set $LovePoint to $LovePoint + 1>>
+    << else >>
+        Don't you have any perfume to help mask that smell of yours. 
+        If you're gonna have such a strong smell, atleast let it be some perfume.
+        << set $LovePoint to $LovePoint - 1>>
+    << endif >> 
+<< endif >>
+[[ Girl.Bear ]]
+===
+title: Girl.Bear
+tags: 
+colorID: 0
+position: -351,-1054
+---
+<< if $ProfileGift is 1>>
+    << if $GiftBear is true>> 
+        OMG that teddy bear is so cute...uwu...
+        Is it for me?
+        Why thank you. I really like cute things since there's nothing cute in this boring brown wasteland.
+        Is there some way I can thank you?
+        << set $LovePoint to $LovePoint + 1>>
+    << else >>
+        What you didn't bring ant cute gift for me? uwu I feel sad now.
+        << set $LovePoint to $LovePoint - 1>>
+    << endif >> 
+<< endif >>
+[[ Girl.Book ]]
+===
+title: Girl.Book
+tags: 
+colorID: 0
+position: -105,-1052
+---
+<< if $ProfileGift is 2>>
+    << if $GiftBook is true>> 
+        A gift for me? How generous of you!!
+        I have been looking for this edition of "The Abyss of the Wasteland" for quite some time.
+        Is there some way I can thank you?
+        << set $LovePoint to $LovePoint + 1>>
+    << else >>
+        Have I not informed you about my interest in reading and learning new stuff about the wasteland?
+        << set $LovePoint to $LovePoint - 1>>
+    << endif >> 
+<< endif >>
+[[ Girl.Chocolate ]]
+===
+title: Girl.Chocolate
+tags: 
+colorID: 0
+position: -107,-803
+---
+<< if $ProfileGift is 3>>
+    << if $GiftChocolate is true>> 
+        Ooo 80% Cocoa Chocolate. 
+        I am surprised you remember that I like my dark chocolate.
+        Is there some way I can thank you?
+        << set $LovePoint to $LovePoint + 1>>
+    << else >>
+        Aw you didn't get me Dark Chocolate even though you know that it is my favourite.
+        You're so bitter, wayy bitter than my favourite Dark Chocolate.
+        << set $LovePoint to $LovePoint - 1>>
+    << endif >> 
+<< endif >>
+[[ Girl.Wallet ]]
+===
+title: Girl.Wallet
+tags: 
+colorID: 0
+position: -106,-558
+---
+I know a place nearby where they make the best pizza in the wasteland. 
+You wanna go and grab a bite together?
+
+<< if $Wallet is true>> 
+    Ow pizza on you?! I will gladly take you up on that offer.
+    << set $LovePoint to $LovePoint + 1>>
+<< else >>
+    Wait?! What?! You lost your wallet at home?
+    ......
+    Nevermind next time you owe me double.
+    << set $LovePoint to $LovePoint - 1>>
+<< endif >> 
+[[ Girl.HouseKeys ]]
+===
+title: Girl.HouseKeys
+tags: 
+colorID: 0
+position: 151,-558
+---
+I have been intrigued by your behaviour tonight and was wondering if it will be okay to go over to your place and chill?
+
+<< if $HouseKeys is true>> 
+    If all is set, I can't wait to see what kind of place you have.
+    << set $LovePoint to $LovePoint + 1>>
+<< else >>
+    Wait?! What?! You don't have your house keys on you?
+    ......
+    In that case I'll call it a day. Hope you find your way home safely.
+    << set $LovePoint to $LovePoint - 1>>
+<< endif >>
+===

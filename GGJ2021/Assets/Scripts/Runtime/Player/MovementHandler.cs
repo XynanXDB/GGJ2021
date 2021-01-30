@@ -8,8 +8,10 @@ namespace Game.Runtime.Player
     {
         [Tooltip("Translation")]
         [SerializeField] protected float MovementSpeed = 5.0f;
+        [SerializeField] protected float MaxMovementSpeed = 10.0f;
         [SerializeField] protected Transform MeshToRotate;
         [SerializeField] protected Transform MeshToAngle;
+        [SerializeField] protected Rigidbody RB;
         private Vector3 _MovementVector;
         private Transform TransformToMove;
         Coroutine LookAtLerpRoutine;
@@ -31,6 +33,9 @@ namespace Game.Runtime.Player
             set { _MovementVector.z = value; }
         }
 
+        public Vector3 GetVelocity => RB.velocity;
+        public float GetMaxMovementSpeed => MaxMovementSpeed;
+
         void Awake()
         {
             TransformToMove = transform;
@@ -44,19 +49,16 @@ namespace Game.Runtime.Player
 
         void Update()
         {
-            if (_MovementVector.sqrMagnitude <= 0.0f)
-            {
-                return;
-            }
-                
             Transform T = transform;
             Quaternion OffsetRotation = Quaternion.AngleAxis(45.0f, Vector3.up);
             Vector3 Vertical = OffsetRotation * T.forward * (_MovementVector.z * MovementSpeed * Time.deltaTime);
             Vector3 Horizontal = OffsetRotation * T.right * (_MovementVector.x * MovementSpeed * Time.deltaTime);
-            FinalDirection = (Vertical + Horizontal).normalized;
+            RB.velocity = Vector3.ClampMagnitude(Vertical + Horizontal, MaxMovementSpeed);
+            
+            if (_MovementVector.sqrMagnitude > 0.0f)
+                FinalDirection = RB.velocity.normalized;
 
             //CurrentRotationY = MeshToRotate.localEulerAngles.y;
-            TransformToMove.Translate(Vertical + Horizontal, Space.World);
             // filter for Previous Value due to 180 limit on rotation
             //if (CurrentRotationY < 0 && PrevRotationY > 0)
             //    PrevRotationY = -360 + PrevRotationY;

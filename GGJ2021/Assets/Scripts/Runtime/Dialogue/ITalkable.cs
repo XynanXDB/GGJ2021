@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Game.Runtime.Dialogue
 {
@@ -6,7 +7,8 @@ namespace Game.Runtime.Dialogue
     public struct FSpeakerInfo
     {
         public string Name;
-        public string InternalIdentifier;
+        
+        [HideInInspector] public string InternalIdentifier;
     }
     
     public interface ITalkable

@@ -1,32 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Game.Utility;
 
 namespace Game.Runtime.Dialogue
 {
     public class DialogueVariableStorage : Yarn.Unity.InMemoryVariableStorage
     {
-        private const string Phone = "Phone";
-        private const string HouseKeys = "HouseKeys";
-        private const string Wallet = "Wallet";
-        
-        private const string ClothesFormal = "ClothesFormal";
-        private const string ClothesSmart = "ClothesSmart";
-        private const string ClothesCasual = "ClothesCasual";
-        
-        private const string SmellShower = "SmellShower";
-        private const string SmellDeodorant = "SmellDeodorant";
-        private const string SmellPerfume = "SmellPerfume";
-        
-        private const string GiftBear = "GiftBear";
-        private const string GiftBook = "GiftBook";
-        private const string GiftChocolate = "GiftChocolate";
-        
-        private const string ComeEarly = "ComeEarly";
-
-        private const string Clothes = "ProfileClothes";
-        private const string Smell = "ProfileSmell";
-        private const string Gift = "ProfileGift";
-        
         public void RetrieveProfile()
         {
             
@@ -40,56 +18,56 @@ namespace Game.Runtime.Dialogue
             {
                 switch (Names)
                 {
-                    case Phone:
-                        SetValue(Phone, true);
+                    case StringConstants.Phone:
+                        SetValue(StringConstants.Phone, true);
                         break;
                     
-                    case HouseKeys:
-                        SetValue(HouseKeys, true);
+                    case StringConstants.HouseKeys:
+                        SetValue(StringConstants.HouseKeys, true);
                         break;
                     
-                    case Wallet:
-                        SetValue(Wallet, true);
+                    case StringConstants.Wallet:
+                        SetValue(StringConstants.Wallet, true);
                         break;
                     
-                    case ClothesFormal:
-                        SetValue(ClothesFormal, true);
+                    case StringConstants.ClothesFormal:
+                        SetValue(StringConstants.ClothesFormal, true);
                         break;
                     
-                    case ClothesSmart:
-                        SetValue(ClothesSmart, true);
+                    case StringConstants.ClothesSmart:
+                        SetValue(StringConstants.ClothesSmart, true);
                         break;
                     
-                    case ClothesCasual:
-                        SetValue(ClothesCasual, true);
+                    case StringConstants.ClothesCasual:
+                        SetValue(StringConstants.ClothesCasual, true);
                         break;
                     
-                    case SmellShower:
-                        SetValue(SmellShower, true);
+                    case StringConstants.SmellShower:
+                        SetValue(StringConstants.SmellShower, true);
                         break;
 
-                    case SmellDeodorant:
-                        SetValue(SmellDeodorant, true);
+                    case StringConstants.SmellDeodorant:
+                        SetValue(StringConstants.SmellDeodorant, true);
                         break;
                     
-                    case SmellPerfume:
-                        SetValue(SmellPerfume, true);
+                    case StringConstants.SmellPerfume:
+                        SetValue(StringConstants.SmellPerfume, true);
                         break;
                     
-                    case GiftBear:
-                        SetValue(GiftBear, true);
+                    case StringConstants.GiftBear:
+                        SetValue(StringConstants.GiftBear, true);
                         break;
                     
-                    case GiftBook:
-                        SetValue(GiftBook, true);
+                    case StringConstants.GiftBook:
+                        SetValue(StringConstants.GiftBook, true);
                         break;
                     
-                    case GiftChocolate:
-                        SetValue(GiftChocolate, true);
+                    case StringConstants.GiftChocolate:
+                        SetValue(StringConstants.GiftChocolate, true);
                         break;
                     
-                    case ComeEarly:
-                        SetValue(ComeEarly, true);
+                    case StringConstants.ComeEarly:
+                        SetValue(StringConstants.ComeEarly, true);
                         break;
                 }
             }
