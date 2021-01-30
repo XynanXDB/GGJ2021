@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(GameTimerCoroutine());
         
     }
+    
 
     IEnumerator GameTimerCoroutine()
     {
