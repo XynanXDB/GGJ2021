@@ -1,16 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
 
 namespace Game.Runtime.Dialogue
 {
-    [System.Serializable]
+    [Serializable]
     public struct FSpeakerInfo
     {
         public string Name;
-        public Transform SpeechTransform;
+        public string InternalIdentifier;
     }
     
     public interface ITalkable
     {
         FSpeakerInfo GetSpeakerInfo();
+        void SendNativeCommand(string[] Data);
     }
 }
