@@ -14,6 +14,7 @@ namespace Game.Runtime.Player
         [SerializeField] protected FSpeakerInfo SpeakerInfo = new FSpeakerInfo()
         {
             Name = "JB",
+            InternalIdentifier = "MC"
         };
         
         void Awake()
@@ -46,7 +47,7 @@ namespace Game.Runtime.Player
         
         public void SendNativeCommand(string[] Data)
         {
-            if (Data[0] != SpeakerInfo.Name) 
+            if (Data[0] != SpeakerInfo.InternalIdentifier) 
                 return;
 
             switch (Data[1])

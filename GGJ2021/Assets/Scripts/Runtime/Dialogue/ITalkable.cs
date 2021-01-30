@@ -6,6 +6,7 @@ namespace Game.Runtime.Dialogue
     public struct FSpeakerInfo
     {
         public string Name;
+        public string InternalIdentifier;
     }
     
     public interface ITalkable

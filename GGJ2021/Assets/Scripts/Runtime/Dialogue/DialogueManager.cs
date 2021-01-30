@@ -24,11 +24,9 @@ namespace Game.Runtime.Dialogue
 
         [SerializeField] protected DialogueDatabase DialogueDB;
         [SerializeField] protected DialogueRunner DialogueRunner;
-        [SerializeField] protected DialogueUI DialogueUI;
+        public RLWDialogueUI DialogueUI;
         
         private OneParamSignature<YarnCommandPacket> OnReceiveSetSpeaker;
-        private ITalkable Player;
-        private ITalkable Speaker2;
         
         void Awake()
         {
@@ -36,10 +34,8 @@ namespace Game.Runtime.Dialogue
                 _DialogueManager = this;
             
             DialogueRunner.AddCommandHandler("SetSpeaker", SetSpeaker);
-            
-            DialogueUI.onDialogueEnd.AddListener(OnDialogueEnd);
-            Player = GameObject.FindGameObjectWithTag("Player").GetComponent<ITalkable>();
-            Player.SendNativeCommand(new []{"JB", "InputModeUI"});
+            DialogueRunner.onDialogueComplete.AddListener(OnDialogueEnd);
+            OnReceiveSetSpeaker += DialogueUI.OnSetSpeaker;
         }
 
         void Start()
@@ -54,18 +50,7 @@ namespace Game.Runtime.Dialogue
 
         void OnDestroy() => OnReceiveSetSpeaker = null;
 
-        public void InitiateDialogue(string YarnAssetName, ITalkable InSpeaker = null,
-            string StartNodeName = "Start")
-        {
-            Speaker2 = InSpeaker;
-            
-            if (InSpeaker != null)
-                JoinConversation(InSpeaker);
-
-            StartDialogue(YarnAssetName, StartNodeName);
-        }
-        
-        void StartDialogue(string YarnAssetName, string StartNodeName = "Start")
+        public void StartDialogue(string YarnAssetName, string StartNodeName = "Start")
         {
             YarnProgram YarnAsset = DialogueDB.GetYarnAssetByKey(YarnAssetName);
             if (YarnAsset != null)
@@ -75,15 +60,6 @@ namespace Game.Runtime.Dialogue
             }
             else
                 Debug.LogError("YarnAsset not found");
-        }
-
-        void JoinConversation(ITalkable Speaker)
-        {
-            FSpeakerInfo SpeakerInfo = Speaker.GetSpeakerInfo();
-            //TODO Add speaker to the UI.
-            
-            if (SpeakerInfo.Name == "JB")
-                Speaker.SendNativeCommand(new []{"JB", "InputModeUI"});
         }
 
         #region CommandHandlers

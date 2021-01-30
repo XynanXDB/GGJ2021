@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Game.Runtime.Dialogue
 {
@@ -19,8 +20,18 @@ namespace Game.Runtime.Dialogue
         private const string GiftBear = "GiftBear";
         private const string GiftBook = "GiftBook";
         private const string GiftChocolate = "GiftChocolate";
+        
         private const string ComeEarly = "ComeEarly";
 
+        private const string Clothes = "ProfileClothes";
+        private const string Smell = "ProfileSmell";
+        private const string Gift = "ProfileGift";
+        
+        public void RetrieveProfile()
+        {
+            
+        }
+        
         public void RetrieveChecklist()
         {
             List<string> Checklist = GameManager.m_instance.ExportListOfName();
