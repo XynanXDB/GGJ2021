@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using Game.Utility;
+﻿using Game.Utility;
 using UnityEngine;
-using UnityEngine.UI;
 using Yarn.Unity;
 
 namespace Game.Runtime.Dialogue
@@ -33,23 +30,19 @@ namespace Game.Runtime.Dialogue
             if (_DialogueManager == null)
                 _DialogueManager = this;
             
-            DialogueRunner.AddCommandHandler("SetSpeaker", SetSpeaker);
             DialogueRunner.onDialogueComplete.AddListener(OnDialogueEnd);
-            OnReceiveSetSpeaker += DialogueUI.OnSetSpeaker;
         }
 
         void Start()
         {
-            //StartDialogue("Test");
+            StartDialogue("Ending");
         }
 
         void OnDialogueEnd()
         {
             DialogueRunner.Clear();
         }
-
-        void OnDestroy() => OnReceiveSetSpeaker = null;
-
+        
         public void StartDialogue(string YarnAssetName, string StartNodeName = "Start")
         {
             YarnProgram YarnAsset = DialogueDB.GetYarnAssetByKey(YarnAssetName);
@@ -61,17 +54,5 @@ namespace Game.Runtime.Dialogue
             else
                 Debug.LogError("YarnAsset not found");
         }
-
-        #region CommandHandlers
-        void SetSpeaker(string[] Params)
-        {
-            string[] Commands = {null, null};
-
-            for (int i = 0; i < Params.Length; i++)
-                Commands[i] = Params[i];
-            
-            OnReceiveSetSpeaker?.Invoke(new YarnCommandPacket(Commands[0], Commands[1]));
-        }
-        #endregion
     }
 }

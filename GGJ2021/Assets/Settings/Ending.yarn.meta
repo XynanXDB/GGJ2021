@@ -1,0 +1,73 @@
+fileFormatVersion: 2
+guid: c60d3e492868edc4fa6039d834a53fc3
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs:
+  - Ending-Girl.ComeEarly-0
+  - Ending-Girl.ComeEarly-1
+  - Ending-Girl.ComeEarly-2
+  - Ending-Girl.Naked-3
+  - Ending-Girl.DontSmellGood-4
+  - Ending-Girl.Phone-5
+  - Ending-Girl.Phone-6
+  - Ending-Girl.Phone-7
+  - Ending-Girl.Formal-8
+  - Ending-Girl.Formal-9
+  - Ending-Girl.Smart-10
+  - Ending-Girl.Smart-11
+  - Ending-Girl.Smart-12
+  - Ending-Girl.Smart-13
+  - Ending-Girl.Smart-14
+  - Ending-Girl.Smart-15
+  - Ending-Girl.Casual-16
+  - Ending-Girl.Casual-17
+  - Ending-Girl.Casual-18
+  - Ending-Girl.Casual-19
+  - Ending-Girl.Shower-20
+  - Ending-Girl.Shower-21
+  - Ending-Girl.Shower-22
+  - Ending-Girl.Shower-23
+  - Ending-Girl.Shower-24
+  - Ending-Girl.Deodorant-25
+  - Ending-Girl.Deodorant-26
+  - Ending-Girl.Deodorant-27
+  - Ending-Girl.Perfume-28
+  - Ending-Girl.Perfume-29
+  - Ending-Girl.Perfume-30
+  - Ending-Girl.Bear-31
+  - Ending-Girl.Bear-32
+  - Ending-Girl.Bear-33
+  - Ending-Girl.Bear-34
+  - Ending-Girl.Bear-35
+  - Ending-Girl.Book-36
+  - Ending-Girl.Book-37
+  - Ending-Girl.Book-38
+  - Ending-Girl.Book-39
+  - Ending-Girl.Chocolate-40
+  - Ending-Girl.Chocolate-41
+  - Ending-Girl.Chocolate-42
+  - Ending-Girl.Chocolate-43
+  - Ending-Girl.Chocolate-44
+  - Ending-Girl.Wallet-45
+  - Ending-Girl.Wallet-46
+  - Ending-Girl.Wallet-47
+  - Ending-Girl.Wallet-48
+  - Ending-Girl.Wallet-49
+  - Ending-Girl.Wallet-50
+  - Ending-Girl.HouseKeys-51
+  - Ending-Girl.HouseKeys-52
+  - Ending-Girl.HouseKeys-53
+  - Ending-Girl.HouseKeys-54
+  - Ending-Girl.HouseKeys-55
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {instanceID: 0}
+  localizations: []
