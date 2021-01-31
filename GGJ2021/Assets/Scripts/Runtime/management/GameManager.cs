@@ -69,6 +69,11 @@ public class GameManager : MonoBehaviour
     InteractableObjects CurrentlyHolding;
     
     public OneParamSignature<string> PostInteractNotification;
+    public Material NakedMat;
+    public Material CasualMat;
+    public Material FormalMat;
+    public Material SmartMat;
+    public GameObject playerModel;
 
     private void Awake()
     {
@@ -97,6 +102,8 @@ public class GameManager : MonoBehaviour
         
         // Temporary need link this to a reset
         StartGame();
+
+        ChageClothes(0);
     }
 
     void OnDestroy()
@@ -150,10 +157,13 @@ public class GameManager : MonoBehaviour
         
         timeStart = Time.time;
         float Lifetime = Time.time - timeStart;
-        byte RemainingTime = 0;
-        while (Lifetime < TotalTime - Lifetime && !StoptimerExit)
+        byte RemainingTime = Convert.ToByte(TotalTime - Time.time + timeStart);
+        while (RemainingTime > 0 && !StoptimerExit)
         {
-            RemainingTime = Convert.ToByte(TotalTime - Time.time + timeStart);
+            if (TotalTime - Time.time + timeStart < 0)
+                RemainingTime = 0;
+            else
+                RemainingTime = Convert.ToByte(TotalTime - Time.time + timeStart);
             TimerText.text = RemainingTime.ToString();
             
             yield return null;
@@ -317,6 +327,19 @@ public class GameManager : MonoBehaviour
             obj.SetActive(false);
         }
         AddItem(TempItem);
+
+        if(ItemName == "$ClothesFormal")
+        {
+            ChageClothes(3);
+        }
+        else if(ItemName == "$ClothesSmart")
+        {
+            ChageClothes(2);
+        }
+        else if(ItemName == "$ClothesCasual")
+        {
+            ChageClothes(1);
+        }
     }
 
     public void PopUpUI(string ItemName)
@@ -407,6 +430,29 @@ public class GameManager : MonoBehaviour
         return GFBehaviour;
     }
 
+    public void ChageClothes(int cloth)
+    {
+        //    NakedMat;
+        //public Material CasualMat;
+        //public Material FormalMat;
+        //public Material SmartMat;
+        
+        Renderer skin = playerModel.GetComponent<Renderer>();
+        Material[] intMaterials = new Material[3];
+        //Material tempMat = new Material();
+        for (int i=0; i< 3; i++)
+        {
+            if(cloth == 1)
+                intMaterials[i] = CasualMat;
+            else if(cloth == 2)
+                intMaterials[i] = SmartMat;
+            else if (cloth == 3)
+                intMaterials[i] = FormalMat;
+            else if (cloth == 0)
+                intMaterials[i] = NakedMat;
+        }
 
+        skin.materials = intMaterials;
+    }
 
 }

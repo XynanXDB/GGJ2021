@@ -8,7 +8,6 @@ namespace Game.Runtime.Player
         [Tooltip("Translation")]
         [SerializeField] protected float MovementSpeed = 5.0f;
         [SerializeField] protected Transform MeshToRotate;
-        [SerializeField] protected Transform MeshToAngle;
         private Vector3 _MovementVector;
         private Transform TransformToMove;
         Coroutine LookAtLerpRoutine;
@@ -55,7 +54,6 @@ namespace Game.Runtime.Player
             {
                 return;
             }
-
             Transform T = transform;
             Quaternion OffsetRotation = Quaternion.AngleAxis(45.0f, Vector3.up);
             Vector3 Vertical = OffsetRotation * T.forward * (_MovementVector.z * Time.deltaTime);
