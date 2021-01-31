@@ -32,10 +32,6 @@ public class GameManager : MonoBehaviour
     public AnimationCurve PopUpAnim;
 
     [Header("GF Bio UI")]
-    public GameObject GFBioObj;
-    public Text BioText1;
-    public Text BioText2;
-    public Text BioText3;
     public string[] ClothingBIo = new string[3];
     public string[] SmellBio = new string[3];
     public string[] GiftBio = new string[3];
@@ -51,7 +47,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] protected TMP_Text CueCardText;
     [SerializeField] protected GameObject InGameHUD;
     [SerializeField] protected GameObject InventoryEntryPrefab;
+    [SerializeField] protected GameObject ProfilePrompt;
+    [SerializeField] protected TMP_Text ProfileText;
+    [SerializeField] protected Button ProfileOKButton;
     [SerializeField] protected Transform InventoryList;
+    
     
     int[] GFBehaviour = new int[3];
     public List<string> itemInventory = new List<string>();
@@ -69,10 +69,22 @@ public class GameManager : MonoBehaviour
         if (m_instance == null)
             m_instance = this;
         
+        playerObject.SetInputMode(InputMode.Disable);
+
+        ProfileOKButton.onClick.AddListener(OnClickProfileOK);
+        ProfilePrompt.SetActive(true);
+        
         CueCardText.gameObject.SetActive(false);
         InGameHUD.SetActive(false);
     }
-    
+
+    void OnClickProfileOK()
+    {
+        ProfilePrompt.SetActive(false);
+        CueCardText.gameObject.SetActive(true);
+        StartCoroutine(GameTimerCoroutine());
+    }
+
     private void Start()
     {
         PostInteractNotification += UIManager.UUIManager.PostInteractNotification;
@@ -90,31 +102,15 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(SpawnObjects());
         // Supposely Coroutine Goes Here
-
-        //StartCoroutine(GameTimerCoroutine());
+        
+        GeneratorGFProfile();
+        ProfilePrompt.SetActive(true);
+        
+        //
     }
-    
 
     IEnumerator GameTimerCoroutine()
     {
-        yield return null;
-        RandomGF(); 
-        yield return null;
-        int ProfileInt = GFBehaviour[0];
-        BioText1.text = ClothingBIo[ProfileInt-1];
-        yield return null;
-        ProfileInt = GFBehaviour[1];
-        BioText2.text = SmellBio[ProfileInt-1];
-        yield return null;
-        ProfileInt = GFBehaviour[2];
-        BioText3.text = GiftBio[ProfileInt-1];
-        yield return null;
-        playerObject.SetInputMode(InputMode.Disable);
-
-        // am using this method so instead of += Time.delta time which is frame timing 
-        //i subtract based on how long the game is running
-
-        // this part to change the Text of the timer to be like ready, set,  go
         float timeStart = Time.time;
 
         while((Time.time - timeStart) < (CountDownTime/3) )
@@ -357,12 +353,24 @@ public class GameManager : MonoBehaviour
             itemInventory.Clear();
     }
 
-    public void RandomGF()
+    public void GeneratorGFProfile()
     {
         for (int i = 0; i < 3; i++)
         {
             GFBehaviour[i] = Random.Range(1, 4);
         }
+
+        int ClothingIndex = GFBehaviour[0] - 1;
+        int SmellIndex = GFBehaviour[1] - 1;
+        int GiftIndex = GFBehaviour[2] - 1;
+        
+        string Output = string.Format($"<color=#222b1c>Oh no!! I'm running late! \n" +
+                                      $"I gotta get ready quick! What did she say she liked again? \n\n" +
+                                      "{0} \n" +
+                                      "{1} \n" +
+                                      "{2} \n\n" +
+                                      $"ARGH!!! I gotta be quick!", ClothingBIo[ClothingIndex], SmellBio[SmellIndex], GiftBio[GiftIndex]);
+        ProfileText.text = Output;
     }
 
     public int[] GetGFProfile()
