@@ -24,62 +24,62 @@ namespace Game.Runtime.Dialogue
 
         public void RetrieveChecklist()
         {
-            List<string> Checklist = new List<string>() {"$ComeEarly"};//UIManager.UUIManager.GFChecklist;
+            List<string> Checklist = UIManager.UUIManager.GFChecklist;
                         
             foreach (string Names in Checklist)
             {
                 switch (Names)
                 {
                     case StringConstants.Phone:
-                        SetValue(StringConstants.Phone, true);
+                        SetValue(StringConstants.Phone, 1);
                         break;
                     
                     case StringConstants.HouseKeys:
-                        SetValue(StringConstants.HouseKeys, true);
+                        SetValue(StringConstants.HouseKeys, 1);
                         break;
                     
                     case StringConstants.Wallet:
-                        SetValue(StringConstants.Wallet, true);
+                        SetValue(StringConstants.Wallet, 1);
                         break;
                     
                     case StringConstants.ClothesFormal:
-                        SetValue(StringConstants.ClothesFormal, true);
+                        SetValue(StringConstants.ClothesFormal, 1);
                         break;
                     
                     case StringConstants.ClothesSmart:
-                        SetValue(StringConstants.ClothesSmart, true);
+                        SetValue(StringConstants.ClothesSmart, 1);
                         break;
                     
                     case StringConstants.ClothesCasual:
-                        SetValue(StringConstants.ClothesCasual, true);
+                        SetValue(StringConstants.ClothesCasual, 1);
                         break;
                     
                     case StringConstants.SmellShower:
-                        SetValue(StringConstants.SmellShower, true);
+                        SetValue(StringConstants.SmellShower, 1);
                         break;
 
                     case StringConstants.SmellDeodorant:
-                        SetValue(StringConstants.SmellDeodorant, true);
+                        SetValue(StringConstants.SmellDeodorant, 1);
                         break;
                     
                     case StringConstants.SmellPerfume:
-                        SetValue(StringConstants.SmellPerfume, true);
+                        SetValue(StringConstants.SmellPerfume, 1);
                         break;
                     
                     case StringConstants.GiftBear:
-                        SetValue(StringConstants.GiftBear, true);
+                        SetValue(StringConstants.GiftBear, 1);
                         break;
                     
                     case StringConstants.GiftBook:
-                        SetValue(StringConstants.GiftBook, true);
+                        SetValue(StringConstants.GiftBook, 1);
                         break;
                     
                     case StringConstants.GiftChocolate:
-                        SetValue(StringConstants.GiftChocolate, true);
+                        SetValue(StringConstants.GiftChocolate, 1);
                         break;
                     
                     case StringConstants.ComeEarly:
-                        SetValue(StringConstants.ComeEarly, true);
+                        SetValue(StringConstants.ComeEarly, 1);
                         break;
                 }
             }
