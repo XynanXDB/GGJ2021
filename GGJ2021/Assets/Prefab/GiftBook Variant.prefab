@@ -5271,7 +5271,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c1b6404ca6bbe5d4abe26045e4198462, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e72869287e67538479ecf25a42c75fe3, type: 2}
+      objectReference: {fileID: 2100000, guid: 06a51568fe9a4a0419af655649ce5773, type: 2}
     - target: {fileID: 919132149155446097, guid: c1b6404ca6bbe5d4abe26045e4198462, type: 3}
       propertyPath: m_Name
       value: SM_Book
