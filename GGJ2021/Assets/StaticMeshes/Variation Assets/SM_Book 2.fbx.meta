@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c1b6404ca6bbe5d4abe26045e4198462
+guid: 22925275ba536c64ab97c7483bf6fe25
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: T_Book
-    second: {fileID: 2100000, guid: e1f5db54fce17f84d9f11d5bd5446247, type: 2}
+    second: {fileID: 2100000, guid: 9058b0e55bc4e5f40a2f394b2422e09a, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
