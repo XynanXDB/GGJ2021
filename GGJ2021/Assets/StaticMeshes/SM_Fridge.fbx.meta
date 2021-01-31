@@ -3,9 +3,14 @@ guid: f474c0d5fd3051345b8171df6f4c675a
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_Fridge
+    second: {fileID: 2100000, guid: 5100c736193e9394aa34f04dae586115, type: 2}
   materials:
-    materialImportMode: 0
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1

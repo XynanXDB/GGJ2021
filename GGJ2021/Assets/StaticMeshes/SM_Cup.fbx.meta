@@ -3,9 +3,14 @@ guid: 2d94082fc1cb94946bb12ca1f744f281
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_Cup
+    second: {fileID: 2100000, guid: 655a03e8454d12c46a18e8b24bf4d032, type: 2}
   materials:
-    materialImportMode: 0
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1

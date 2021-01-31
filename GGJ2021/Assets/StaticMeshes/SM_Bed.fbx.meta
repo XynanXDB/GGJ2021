@@ -3,9 +3,19 @@ guid: c34199f87b625f54f92d422657d91629
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_BedFrame
+    second: {fileID: 2100000, guid: 7f89d77b0cfb627439d97b0679e9c66a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_Mattress
+    second: {fileID: 2100000, guid: 7c56405dfbfc141459c59d5b13c7c11e, type: 2}
   materials:
-    materialImportMode: 0
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
