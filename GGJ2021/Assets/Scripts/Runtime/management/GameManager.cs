@@ -69,15 +69,6 @@ public class GameManager : MonoBehaviour
     {
         if (m_instance == null)
             m_instance = this;
-        
-        playerObject.SetInputMode(InputMode.Disable);
-
-        ProfileOKButton.onClick.AddListener(OnClickProfileOK);
-        ProfilePrompt.SetActive(true);
-        
-        CueCardText.gameObject.SetActive(false);
-        InGameHUD.SetActive(false);
-        GeneratorGFProfile();
     }
 
     void OnClickProfileOK()
@@ -90,6 +81,15 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         PostInteractNotification += UIManager.UUIManager.PostInteractNotification;
+        
+        playerObject.SetInputMode(InputMode.Disable);
+
+        ProfileOKButton.onClick.AddListener(OnClickProfileOK);
+        ProfilePrompt.SetActive(true);
+        
+        CueCardText.gameObject.SetActive(false);
+        InGameHUD.SetActive(false);
+        GeneratorGFProfile();
         
         // Temporary need link this to a reset
         StartGame();
