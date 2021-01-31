@@ -13,9 +13,12 @@ namespace Game.Runtime.Dialogue
             int[] Profile = UIManager.UUIManager.GFProfile;
             RetrieveChecklist();
 
-            SetValue(StringConstants.Clothes, Profile[0]);
-            SetValue(StringConstants.Smell, Profile[1]);
-            SetValue(StringConstants.Gift, Profile[2]);
+            if (Profile != null && Profile.Length > 0)
+            {
+                SetValue(StringConstants.Clothes, Profile[0]);
+                SetValue(StringConstants.Smell, Profile[1]);
+                SetValue(StringConstants.Gift, Profile[2]);
+            }
         }
 
         public void RetrieveChecklist()

@@ -51,7 +51,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] protected TMP_Text ProfileText;
     [SerializeField] protected Button ProfileOKButton;
     [SerializeField] protected Transform InventoryList;
-    
+
+    [SerializeField] protected AudioSource BGM;
     
     int[] GFBehaviour = new int[3];
     public List<string> itemInventory = new List<string>();
@@ -137,6 +138,7 @@ public class GameManager : MonoBehaviour
         CueCardText.text = "Rush";
         yield return new WaitForSeconds(1.0f);
         
+        BGM.Play();
         CueCardText.gameObject.SetActive(false);
         InGameHUD.gameObject.SetActive(true);
         
