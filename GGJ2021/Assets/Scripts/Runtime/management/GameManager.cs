@@ -173,7 +173,8 @@ public class GameManager : MonoBehaviour
         SendInfoToUI();
 
         yield return new WaitForSeconds(2.0f);
-
+        
+        playerObject.SetInputMode(InputMode.UI);
         GameInstance.UGameInstance.LoadScene("Ending");
         // the main countdown is here using the   float of ~~~ CountDownTime  ~~~~ to set how long the game to run for
 
@@ -364,7 +365,7 @@ public class GameManager : MonoBehaviour
 
     public void CameEarly()
     {
-        itemInventory.Add("ComeEarly");
+        itemInventory.Add(StringConstants.ComeEarly);
     }
 
     public void SendInfoToUI()

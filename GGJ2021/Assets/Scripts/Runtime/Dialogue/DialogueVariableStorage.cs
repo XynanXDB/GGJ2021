@@ -18,7 +18,7 @@ namespace Game.Runtime.Dialogue
                 SetValue(StringConstants.Smell, Profile[1]);
                 SetValue(StringConstants.Gift, Profile[2]);
             }
-            
+
             DialogueManager.UDialogueManager.StartDialogue("Ending");
         }
 
@@ -28,6 +28,7 @@ namespace Game.Runtime.Dialogue
                         
             foreach (string Names in Checklist)
             {
+                Debug.Log(Names);
                 switch (Names)
                 {
                     case StringConstants.Phone:
