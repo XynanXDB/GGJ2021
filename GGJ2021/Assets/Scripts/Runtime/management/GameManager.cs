@@ -4,11 +4,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Game.Runtime.Input;
 using Game.Runtime.UI;
+using Game.Runtime.Utility;
 using Game.Utility;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
+using Game.Runtime.management;
+using Yarn.Unity;
 
 public class GameManager : MonoBehaviour
 {
@@ -42,7 +45,9 @@ public class GameManager : MonoBehaviour
     public GameObject TimerUI;
     public TMP_Text TimerText;
     public Player playerObject;
-    
+
+    public bool StoptimerExit = false;
+
     [Header("UI")]
     [SerializeField] protected TMP_Text CueCardText;
     [SerializeField] protected GameObject InGameHUD;
@@ -110,9 +115,12 @@ public class GameManager : MonoBehaviour
 
     IEnumerator GameTimerCoroutine()
     {
+        StoptimerExit = false;
         float timeStart = Time.time;
 
-        while((Time.time - timeStart) < (CountDownTime/3) )
+        BGM.Play();
+
+        while ((Time.time - timeStart) < (CountDownTime/3) )
         {
             CueCardText.text = "Ready";
             yield return null;
@@ -136,23 +144,37 @@ public class GameManager : MonoBehaviour
         //Count down begins and play game
 
         CueCardText.text = "Rush";
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(.5f);
         
-        BGM.Play();
         CueCardText.gameObject.SetActive(false);
         InGameHUD.gameObject.SetActive(true);
         
         timeStart = Time.time;
         float Lifetime = Time.time - timeStart;
         byte RemainingTime = 0;
-        while (Lifetime < TotalTime - Lifetime)
+        while (Lifetime < TotalTime - Lifetime && !StoptimerExit)
         {
             RemainingTime = Convert.ToByte(TotalTime - Time.time + timeStart);
             TimerText.text = RemainingTime.ToString();
             
             yield return null;
         }
+        InGameHUD.gameObject.SetActive(false);
 
+        CueCardText.gameObject.SetActive(true);
+        if (!StoptimerExit)
+        {
+            playerObject.SetInputMode(InputMode.Disable);
+            CueCardText.text = "Times Up";
+            yield return new WaitForSeconds(2.0f);
+        }
+
+        CueCardText.text = "Time To Go";
+        SendInfoToUI();
+
+        yield return new WaitForSeconds(2.0f);
+
+        GameInstance.UGameInstance.LoadScene("Ending");
         // the main countdown is here using the   float of ~~~ CountDownTime  ~~~~ to set how long the game to run for
 
         // will do
@@ -160,10 +182,10 @@ public class GameManager : MonoBehaviour
         //                                      need convert to string here or something more faster and light weight
 
         // then end here after duration over  ~~~ CountDownTime ~~~~~
-        
+
 
         // if early end run this will add the run early in
-        CameEarly();
+        //CameEarly();
     }
 
     IEnumerator SpawnObjects()
@@ -347,6 +369,11 @@ public class GameManager : MonoBehaviour
         itemInventory.Add("ComeEarly");
     }
 
+    public void SendInfoToUI()
+    {
+        UIManager.UUIManager.GFChecklist = ExportListOfName();
+    }
+
     public void ClearList()
     {
         if (itemInventory.Count != 0)
@@ -379,4 +406,8 @@ public class GameManager : MonoBehaviour
     {
         return GFBehaviour;
     }
+
+    public float GetFinalScore()
+     => DialogueRunner.variableStorage.GetValue(StringConstants.LovePoint).AsNumber / 7.0f;
+
 }

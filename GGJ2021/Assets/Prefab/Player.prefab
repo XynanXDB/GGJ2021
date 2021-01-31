@@ -57,9 +57,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f74c30203f799784dbf945fdc717da5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlipForce: 15
+  FlipForce: 20
   ExplosionRadius: 5
-  UpwardModifier: 2
+  UpwardModifier: 4
   InteractableObjects: []
 --- !u!1 &2813233332232079499
 GameObject:
