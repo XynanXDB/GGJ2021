@@ -23,6 +23,7 @@
         public const string Clothes = "$ProfileClothes";
         public const string Smell = "$ProfileSmell";
         public const string Gift = "$ProfileGift";
+        public const string LovePoint = "$LovePoint";
 
         public const string AnimationVelocity = "Velocity";
 

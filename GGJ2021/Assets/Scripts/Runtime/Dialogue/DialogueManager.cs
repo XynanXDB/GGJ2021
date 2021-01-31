@@ -1,4 +1,5 @@
-﻿using Game.Utility;
+﻿using Game.Runtime.Utility;
+using Game.Utility;
 using UnityEngine;
 using Yarn.Unity;
 
@@ -54,5 +55,8 @@ namespace Game.Runtime.Dialogue
             else
                 Debug.LogError("YarnAsset not found");
         }
+
+        public float GetFinalScore() 
+            => DialogueRunner.variableStorage.GetValue(StringConstants.LovePoint).AsNumber / 7.0f;
     }
 }
