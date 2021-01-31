@@ -45,9 +45,13 @@ public class GameManager : MonoBehaviour
     public double TotalTime;
     public GameObject TimerUI;
     public TMP_Text TimerText;
+    public Player playerObject;
+    
+    [Header("UI")]
     [SerializeField] protected TMP_Text CueCardText;
     [SerializeField] protected GameObject InGameHUD;
-    public Player playerObject;
+    [SerializeField] protected GameObject InventoryEntryPrefab;
+    [SerializeField] protected Transform InventoryList;
     
     int[] GFBehaviour = new int[3];
     public List<string> itemInventory = new List<string>();
@@ -57,10 +61,7 @@ public class GameManager : MonoBehaviour
     public static GameManager m_instance;
     InteractableObjects TempItem;
     InteractableObjects CurrentlyHolding;
-
-    [SerializeField] protected GameObject InventoryEntryPrefab;
-    [SerializeField] protected Transform InventoryList;
-
+    
     public OneParamSignature<string> PostInteractNotification;
 
     private void Awake()
@@ -68,7 +69,7 @@ public class GameManager : MonoBehaviour
         if (m_instance == null)
             m_instance = this;
         
-        CueCardText.gameObject.SetActive(true);
+        CueCardText.gameObject.SetActive(false);
         InGameHUD.SetActive(false);
     }
     
@@ -90,8 +91,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SpawnObjects());
         // Supposely Coroutine Goes Here
 
-        StartCoroutine(GameTimerCoroutine());
-        
+        //StartCoroutine(GameTimerCoroutine());
     }
     
 
@@ -148,12 +148,12 @@ public class GameManager : MonoBehaviour
         
         timeStart = Time.time;
         float Lifetime = Time.time - timeStart;
-
+        byte RemainingTime = 0;
         while (Lifetime < TotalTime - Lifetime)
         {
-            byte RemainingTime = Convert.ToByte(TotalTime - Time.time + timeStart);
+            RemainingTime = Convert.ToByte(TotalTime - Time.time + timeStart);
             TimerText.text = RemainingTime.ToString();
-
+            
             yield return null;
         }
 
@@ -168,7 +168,6 @@ public class GameManager : MonoBehaviour
 
         // if early end run this will add the run early in
         CameEarly();
-
     }
 
     IEnumerator SpawnObjects()
