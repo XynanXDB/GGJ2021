@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Game.Runtime.UI;
 using Game.Runtime.Utility;
-using Game.Utility;
 using UnityEngine;
 
 namespace Game.Runtime.Dialogue
@@ -19,15 +18,16 @@ namespace Game.Runtime.Dialogue
                 SetValue(StringConstants.Smell, Profile[1]);
                 SetValue(StringConstants.Gift, Profile[2]);
             }
+            
+            DialogueManager.UDialogueManager.StartDialogue("Ending");
         }
 
         public void RetrieveChecklist()
         {
-            List<string> Checklist = UIManager.UUIManager.GFChecklist;
-            
+            List<string> Checklist = new List<string>() {"$ComeEarly"};//UIManager.UUIManager.GFChecklist;
+                        
             foreach (string Names in Checklist)
             {
-                Debug.Log(Names);
                 switch (Names)
                 {
                     case StringConstants.Phone:
