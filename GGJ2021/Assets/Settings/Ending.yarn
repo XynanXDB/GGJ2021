@@ -46,7 +46,7 @@ tags:
 colorID: 0
 position: -861,-804
 ---
-<< if $Phone is true >>
+<< if $Phone is false >>
     Actually I was trying to call you just now but you didn't answer.
     You forgot to bring your phone out didn't you? Seriously stop losing your phone.
     << set $LovePoint to $LovePoint - 1>>
