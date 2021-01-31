@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Game.Runtime.UI
@@ -9,6 +10,7 @@ namespace Game.Runtime.UI
         private GameObject FocusedGO;
 
         public int[] GFProfile;
+        public List<string> GFChecklist;
         
         void Awake()
         {
