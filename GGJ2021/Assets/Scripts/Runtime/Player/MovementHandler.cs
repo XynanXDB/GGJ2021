@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Game.Runtime.Player
 {
@@ -8,7 +7,6 @@ namespace Game.Runtime.Player
     {
         [Tooltip("Translation")]
         [SerializeField] protected float MovementSpeed = 5.0f;
-        [SerializeField] protected float MaxMovementSpeed = 8.0f;
         [SerializeField] protected Transform MeshToRotate;
         [SerializeField] protected Transform MeshToAngle;
         private Vector3 _MovementVector;
@@ -34,8 +32,10 @@ namespace Game.Runtime.Player
             set { _MovementVector.z = value; }
         }
 
-        public Vector3 GetVelocity => rigidToMove.velocity;
-        public float GetMaxMovementSpeed => MaxMovementSpeed;
+        public Vector3 MovementVector
+        {
+            get => _MovementVector;
+        }
 
         void Awake()
         {

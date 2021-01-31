@@ -1,4 +1,4 @@
-﻿namespace Game.Utility
+﻿namespace Game.Runtime.Utility
 {
     public static class StringConstants
     {
@@ -29,6 +29,8 @@
         public const string LevelEnding = "Ending";
         public const string LevelMain= "MainLevel";
         public const string LevelMainMenu = "MainMenu";
-        
+
+        public const string PlayerAnimate_Interact = "Interact";
+
     }
 }

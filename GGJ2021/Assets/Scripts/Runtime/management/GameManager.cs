@@ -2,6 +2,7 @@
 using Game.Runtime.Player;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Runtime.Input;
 using Game.Runtime.UI;
 using Game.Utility;
 using UnityEngine;
@@ -103,7 +104,7 @@ public class GameManager : MonoBehaviour
         ProfileInt = GFBehaviour[2];
         BioText3.text = GiftBio[ProfileInt-1];
         yield return null;
-        playerObject.DisableMovement();
+        playerObject.SetInputMode(InputMode.Disable);
 
         // am using this method so instead of += Time.delta time which is frame timing 
         //i subtract based on how long the game is running
@@ -131,7 +132,7 @@ public class GameManager : MonoBehaviour
 
         // Player can move already and start running around
 
-        playerObject.EnableMovement();
+        playerObject.SetInputMode(InputMode.Game);
         //Count down begins and play game
 
         TimerText.text = "Rush";

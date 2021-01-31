@@ -1,5 +1,6 @@
 ﻿using Game.Runtime.Dialogue;
 using Game.Runtime.Input;
+using Game.Runtime.Utility;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,13 +10,14 @@ namespace Game.Runtime.Player
     {
         [SerializeField] protected MovementHandler MovementHandler;
         [SerializeField] protected InteractionHandler InteractionHandler;
-        private InputHandler InputHandler;
-        
+        [SerializeField] protected Animator PlayerAnimate;
         [SerializeField] protected FSpeakerInfo SpeakerInfo = new FSpeakerInfo()
         {
             Name = "JB",
             InternalIdentifier = "MC"
         };
+        
+        private InputHandler InputHandler;
         
         void Awake()
         {
@@ -33,8 +35,10 @@ namespace Game.Runtime.Player
 
         public void OnInteract(InputAction.CallbackContext context)
         {
-            if (context.performed)
-                InteractionHandler.Interact();
+            if (!context.performed) return;
+            
+            InteractionHandler.Interact();
+            PlayerAnimate.SetBool(StringConstants.PlayerAnimate_Interact, true);
         }
 
         public void OnDrop(InputAction.CallbackContext context)
@@ -49,7 +53,7 @@ namespace Game.Runtime.Player
         {
             if (Data[0] != SpeakerInfo.InternalIdentifier) 
                 return;
-
+            
             switch (Data[1])
             {
                 case "InputModeUI":
@@ -59,15 +63,13 @@ namespace Game.Runtime.Player
                 case "InputModeGame":
                     InputHandler.SetInputMode(InputMode.Game);
                     break;
+                
+                case "InputModeDisable":
+                    InputHandler.SetInputMode(InputMode.Disable);
+                    break;
             }
         }
-        public void EnableMovement()
-        {
-            MovementHandler.enabled = true;
-        }
-        public void DisableMovement()
-        {
-            MovementHandler.enabled = false;
-        }
+
+        public void SetInputMode(InputMode Mode) => InputHandler.SetInputMode(Mode);
     }
 }

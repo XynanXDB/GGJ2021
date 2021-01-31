@@ -1,5 +1,5 @@
 ﻿using Game.Runtime.management;
-using Game.Utility;
+using Game.Runtime.Utility;
 using UnityEngine;
 
 #if UNITY_EDITOR

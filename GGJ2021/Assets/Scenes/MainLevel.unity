@@ -4951,11 +4951,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8185155883099882650, guid: 2b0c67f2ad4ca56498819b235a0d7569, type: 3}
---- !u!4 &950522923 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3783663236421803769, guid: d1902f1fb6b27ae40ab99acc2ab7c4e1, type: 3}
-  m_PrefabInstance: {fileID: 455603663}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &951955185 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9ea5e73f2133b88449aa6b85b65ac76a, type: 3}
@@ -6525,7 +6520,7 @@ Transform:
   m_LocalScale: {x: 0.52555, y: 1.1902, z: 0.11247}
   m_Children: []
   m_Father: {fileID: 1392833853}
-  m_RootOrder: 43
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!54 &1292249782
 Rigidbody:
@@ -7279,6 +7274,7 @@ Transform:
   - {fileID: 1267273377}
   - {fileID: 1782171754}
   - {fileID: 1758492684}
+  - {fileID: 1292249781}
   - {fileID: 951955186}
   - {fileID: 1851608257}
   - {fileID: 47207852}
@@ -7302,7 +7298,6 @@ Transform:
   - {fileID: 659353865}
   - {fileID: 2092974058}
   - {fileID: 122037040}
-  - {fileID: 1292249781}
   - {fileID: 727263904}
   - {fileID: 2090184354}
   m_Father: {fileID: 0}
@@ -16279,7 +16274,7 @@ MonoBehaviour:
     spawnLocale:
     - {fileID: 490069015}
     - {fileID: 739093387}
-    HoldItemPos: {fileID: 950522923}
+    HoldItemPos: {fileID: 0}
   - ItemName: 'GiftBook '
     ItemPrefab: {fileID: 1715091481334425081, guid: 42c1354d40121dd4c80a8b7fa592dd14, type: 3}
     canHold: 1
@@ -16289,7 +16284,7 @@ MonoBehaviour:
     spawnLocale:
     - {fileID: 548301561}
     - {fileID: 317051556}
-    HoldItemPos: {fileID: 950522923}
+    HoldItemPos: {fileID: 0}
   - ItemName: 'GiftChocolate '
     ItemPrefab: {fileID: 8914204139409481437, guid: b2bbda3379527d74399213c408da3c6e, type: 3}
     canHold: 1
@@ -16298,7 +16293,7 @@ MonoBehaviour:
     ItemRemove2: 'GiftBook '
     spawnLocale:
     - {fileID: 1827698718}
-    HoldItemPos: {fileID: 950522923}
+    HoldItemPos: {fileID: 0}
   popSpeed: 3
   PopUpAnim:
     serializedVersion: 2

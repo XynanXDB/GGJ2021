@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Game.Runtime.Utility;
 using Game.Utility;
 
 namespace Game.Runtime.Dialogue

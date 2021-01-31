@@ -7,7 +7,8 @@ namespace Game.Runtime.Input
     public enum InputMode
     {
         Game,
-        UI
+        UI,
+        Disable
     }
     
     public class InputHandler
@@ -22,14 +23,18 @@ namespace Game.Runtime.Input
                 {
                     Controls.UI.Disable();
                     Controls.Game.Enable();
-                    Debug.Log("Game Input Enabled");
                     break;
                 }
                 case InputMode.UI:
                 {
                     Controls.Game.Disable();
                     Controls.UI.Enable();
-                    Debug.Log("UI Input Enabled");
+                    break;
+                }
+                case InputMode.Disable:
+                {
+                    Controls.Game.Disable();
+                    Controls.UI.Disable();
                     break;
                 }
             }

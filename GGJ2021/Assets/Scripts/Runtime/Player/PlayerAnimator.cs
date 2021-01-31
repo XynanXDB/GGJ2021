@@ -1,5 +1,5 @@
-﻿using System;
-using Game.Utility;
+﻿using Game.Runtime.Input;
+using Game.Runtime.Utility;
 using UnityEngine;
 
 namespace Game.Runtime.Player
@@ -8,11 +8,21 @@ namespace Game.Runtime.Player
     {
         [SerializeField] protected MovementHandler MovementHandler;
         [SerializeField] protected Animator Animator;
+
+        private Player PlayerObj;
+
+        void Awake()
+        {
+            PlayerObj = transform.root.GetComponent<Player>();
+        }
         
         private void Update()
         {
-            //float VelocityRatio = MovementHandler.GetVelocity.magnitude / MovementHandler.GetMaxMovementSpeed;
-            Animator.SetFloat(StringConstants.AnimationVelocity, 1);
+            float Velocity = MovementHandler.MovementVector.sqrMagnitude > 0.0f ? 1.0f : 0.0f;
+            Animator.SetFloat(StringConstants.AnimationVelocity, Velocity);
         }
+
+        public void ToggleMovement(bool State) 
+            => PlayerObj.SetInputMode(State ? InputMode.Game : InputMode.Disable);
     }
 }
