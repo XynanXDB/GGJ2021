@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] protected AudioSource BGM;
     
-    int[] GFBehaviour = new int[3];
+    public int[] GFBehaviour = new int[3];
     public List<string> itemInventory = new List<string>();
 
     Dictionary<string, GameObject> SpawnedObjectDic = new Dictionary<string, GameObject>();
@@ -94,7 +94,6 @@ public class GameManager : MonoBehaviour
         
         CueCardText.gameObject.SetActive(false);
         InGameHUD.SetActive(false);
-        GeneratorGFProfile();
         
         // Temporary need link this to a reset
         StartGame();
@@ -159,6 +158,7 @@ public class GameManager : MonoBehaviour
             
             yield return null;
         }
+        TimerText.text = "0";
         InGameHUD.gameObject.SetActive(false);
 
         CueCardText.gameObject.SetActive(true);
@@ -190,6 +190,10 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SpawnObjects()
     {
+        yield return null;
+
+        GeneratorGFProfile();
+
         for (int i = 0; i < AllItems.Count; i++)
         {
             InteractableObjects item = AllItems[i];
@@ -358,12 +362,6 @@ public class GameManager : MonoBehaviour
         yield return null;
     }
 
-    // used for Story Part will return true or false
-    public List<string> ExportListOfName()
-    {
-        return itemInventory;
-    }
-
     public void CameEarly()
     {
         itemInventory.Add("ComeEarly");
@@ -371,7 +369,7 @@ public class GameManager : MonoBehaviour
 
     public void SendInfoToUI()
     {
-        UIManager.UUIManager.GFChecklist = ExportListOfName();
+        UIManager.UUIManager.GFChecklist = itemInventory;
     }
 
     public void ClearList()
@@ -400,6 +398,7 @@ public class GameManager : MonoBehaviour
         ProfileText.text = Output;
 
         UIManager.UUIManager.GFProfile = GFBehaviour;
+        //UIManager.UUIManager.GFProfile = GFBehaviour;
     }
 
     public int[] GetGFProfile()
@@ -407,7 +406,6 @@ public class GameManager : MonoBehaviour
         return GFBehaviour;
     }
 
-    public float GetFinalScore()
-     => DialogueRunner.variableStorage.GetValue(StringConstants.LovePoint).AsNumber / 7.0f;
+
 
 }
