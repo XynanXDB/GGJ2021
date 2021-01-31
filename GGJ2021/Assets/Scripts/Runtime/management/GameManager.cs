@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Game.Runtime.Input;
 using Game.Runtime.UI;
 using Game.Utility;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -43,9 +44,10 @@ public class GameManager : MonoBehaviour
     public float CountDownTime;
     public double TotalTime;
     public GameObject TimerUI;
-    public Text TimerText;
+    public TMP_Text TimerText;
+    [SerializeField] protected TMP_Text CueCardText;
+    [SerializeField] protected GameObject InGameHUD;
     public Player playerObject;
-    private VoidSignature OnLimitedTime;
     
     int[] GFBehaviour = new int[3];
     public List<string> itemInventory = new List<string>();
@@ -56,14 +58,18 @@ public class GameManager : MonoBehaviour
     InteractableObjects TempItem;
     InteractableObjects CurrentlyHolding;
 
+    [SerializeField] protected GameObject InventoryEntryPrefab;
+    [SerializeField] protected Transform InventoryList;
+
     public OneParamSignature<string> PostInteractNotification;
 
     private void Awake()
     {
         if (m_instance == null)
-        {
             m_instance = this;
-        }
+        
+        CueCardText.gameObject.SetActive(true);
+        InGameHUD.SetActive(false);
     }
     
     private void Start()
@@ -77,7 +83,6 @@ public class GameManager : MonoBehaviour
     void OnDestroy()
     {
         PostInteractNotification = null;
-        OnLimitedTime = null;
     }
 
     void StartGame()
@@ -114,19 +119,19 @@ public class GameManager : MonoBehaviour
 
         while((Time.time - timeStart) < (CountDownTime/3) )
         {
-            TimerText.text = "Ready";
+            CueCardText.text = "Ready";
             yield return null;
         }
         timeStart = Time.time;
         while ((Time.time - timeStart) < (CountDownTime / 3))
         {
-            TimerText.text = "Ready";
+            CueCardText.text = "Ready";
             yield return null;
         }
         timeStart = Time.time;
         while ((Time.time - timeStart) < (CountDownTime / 3))
         {
-            TimerText.text = "Steady";
+            CueCardText.text = "Steady";
             yield return null;
         }
 
@@ -135,25 +140,20 @@ public class GameManager : MonoBehaviour
         playerObject.SetInputMode(InputMode.Game);
         //Count down begins and play game
 
-        TimerText.text = "Rush";
+        CueCardText.text = "Rush";
         yield return new WaitForSeconds(1.0f);
-
-        timeStart = Time.time;
-        float TimeLeft = 10.0f;
-        float Lifetime = Time.time - timeStart;
-        double RemainingTime = 0.0f;
         
+        CueCardText.gameObject.SetActive(false);
+        InGameHUD.gameObject.SetActive(true);
+        
+        timeStart = Time.time;
+        float Lifetime = Time.time - timeStart;
+
         while (Lifetime < TotalTime - Lifetime)
         {
-            RemainingTime = TotalTime - Time.time + timeStart;
-            TimerText.text = RemainingTime.ToString("#.##");
+            byte RemainingTime = Convert.ToByte(TotalTime - Time.time + timeStart);
+            TimerText.text = RemainingTime.ToString();
 
-            if (Math.Abs(RemainingTime - TimeLeft) < float.Epsilon)
-            {
-                OnLimitedTime?.Invoke();
-                OnLimitedTime = null;
-            }
-            
             yield return null;
         }
 
@@ -215,6 +215,21 @@ public class GameManager : MonoBehaviour
         {
             RemoveItem(HoldingItem.ItemRemove2);
         }
+
+        RefreshInventoryUI();
+    }
+
+    void RefreshInventoryUI()
+    {
+        //Performance is bad, but no time to optimise
+        foreach (Transform GO in InventoryList)
+            Destroy(GO.gameObject);
+
+        foreach (string Item in itemInventory)
+        {
+            GameObject GO = GameObject.Instantiate(InventoryEntryPrefab, Vector3.zero, Quaternion.identity, InventoryList);
+            GO.GetComponent<TMP_Text>().text = Item;
+        }
     }
 
     public void RemoveItem(string ItemName) // remove from List
@@ -229,6 +244,8 @@ public class GameManager : MonoBehaviour
             // Drop Item
             DropItem(TempItem);
         }
+        
+        RefreshInventoryUI();
     }
 
     public void DropItem(InteractableObjects Item) // only used for item that are being Held 
