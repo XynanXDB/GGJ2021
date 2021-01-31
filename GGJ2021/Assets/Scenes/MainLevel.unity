@@ -19276,7 +19276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllItems:
-  - ItemName: Phone
+  - ItemName: $Phone
     ItemPrefab: {fileID: 7524905266223729693, guid: 1669352e6507ab5429fbb9cd0396d335, type: 3}
     canHold: 0
     disableOnUse: 1
@@ -19286,7 +19286,7 @@ MonoBehaviour:
     - {fileID: 1563805425}
     - {fileID: 44282863}
     HoldItemPos: {fileID: 0}
-  - ItemName: HouseKeys
+  - ItemName: $HouseKeys
     ItemPrefab: {fileID: 4161411070064362214, guid: 7a0c6eee4737d164d8946b0d9569a18b, type: 3}
     canHold: 0
     disableOnUse: 1
@@ -19297,7 +19297,7 @@ MonoBehaviour:
     - {fileID: 304980192}
     - {fileID: 553260576}
     HoldItemPos: {fileID: 0}
-  - ItemName: Wallet
+  - ItemName: $Wallet
     ItemPrefab: {fileID: 3679978046475321630, guid: b0a776b1c3bb6244384f407bf9eaca99, type: 3}
     canHold: 0
     disableOnUse: 1
@@ -19307,7 +19307,7 @@ MonoBehaviour:
     - {fileID: 475550987}
     - {fileID: 983525340}
     HoldItemPos: {fileID: 0}
-  - ItemName: 'ClothesFormal '
+  - ItemName: $ClothesFormal
     ItemPrefab: {fileID: 51427978713992749, guid: df2b1f5ba813557418c77b2152820c78, type: 3}
     canHold: 0
     disableOnUse: 0
@@ -19316,7 +19316,7 @@ MonoBehaviour:
     spawnLocale:
     - {fileID: 193782090}
     HoldItemPos: {fileID: 0}
-  - ItemName: 'ClothesSmart '
+  - ItemName: $ClothesSmart
     ItemPrefab: {fileID: 2411487087263261703, guid: df957288f14d7f14a840fba07372c59b, type: 3}
     canHold: 0
     disableOnUse: 0
@@ -19325,7 +19325,7 @@ MonoBehaviour:
     spawnLocale:
     - {fileID: 705309831}
     HoldItemPos: {fileID: 0}
-  - ItemName: 'ClothesCasual '
+  - ItemName: $ClothesCasual
     ItemPrefab: {fileID: 3646024485343153165, guid: 9314d0bbb0c142740ac8cb1549c2471e, type: 3}
     canHold: 0
     disableOnUse: 0
@@ -19334,7 +19334,7 @@ MonoBehaviour:
     spawnLocale:
     - {fileID: 261944134}
     HoldItemPos: {fileID: 0}
-  - ItemName: 'SmellShower '
+  - ItemName: $SmellShower
     ItemPrefab: {fileID: 5912909751425073872, guid: ed57375e1ce576d46abdf6d48f5b2bcc, type: 3}
     canHold: 0
     disableOnUse: 0
@@ -19343,7 +19343,7 @@ MonoBehaviour:
     spawnLocale:
     - {fileID: 1894300462}
     HoldItemPos: {fileID: 0}
-  - ItemName: 'SmellDeodorant '
+  - ItemName: $SmellDeodorant
     ItemPrefab: {fileID: 3433222842889327593, guid: f6ddb653488c293458f77e5a4378b4f1, type: 3}
     canHold: 0
     disableOnUse: 0
@@ -19353,7 +19353,7 @@ MonoBehaviour:
     - {fileID: 496651955}
     - {fileID: 457346950}
     HoldItemPos: {fileID: 0}
-  - ItemName: 'SmellPerfume '
+  - ItemName: $SmellPerfume
     ItemPrefab: {fileID: 4211475485122374846, guid: d9cf76479889c1840859bc33db5b2f15, type: 3}
     canHold: 0
     disableOnUse: 0
@@ -19363,7 +19363,7 @@ MonoBehaviour:
     - {fileID: 1330926879}
     - {fileID: 2033227561}
     HoldItemPos: {fileID: 0}
-  - ItemName: 'GiftBear '
+  - ItemName: $GiftBear
     ItemPrefab: {fileID: 3106173042051932556, guid: cc124518fe11874438f6a899238eae4f, type: 3}
     canHold: 1
     disableOnUse: 0
@@ -19373,7 +19373,7 @@ MonoBehaviour:
     - {fileID: 490069015}
     - {fileID: 739093387}
     HoldItemPos: {fileID: 455603664}
-  - ItemName: 'GiftBook '
+  - ItemName: $GiftBook
     ItemPrefab: {fileID: 1715091481334425081, guid: 42c1354d40121dd4c80a8b7fa592dd14, type: 3}
     canHold: 1
     disableOnUse: 0
@@ -19383,7 +19383,7 @@ MonoBehaviour:
     - {fileID: 548301561}
     - {fileID: 317051556}
     HoldItemPos: {fileID: 455603664}
-  - ItemName: 'GiftChocolate '
+  - ItemName: $GiftChocolate
     ItemPrefab: {fileID: 8914204139409481437, guid: b2bbda3379527d74399213c408da3c6e, type: 3}
     canHold: 1
     disableOnUse: 0
