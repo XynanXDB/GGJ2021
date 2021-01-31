@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
         // Temporary need link this to a reset
         StartGame();
     }
-    
+
     void OnDestroy()
     {
         PostInteractNotification = null;
