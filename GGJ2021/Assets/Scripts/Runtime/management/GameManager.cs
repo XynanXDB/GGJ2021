@@ -63,19 +63,20 @@ public class GameManager : MonoBehaviour
         {
             m_instance = this;
         }
-
-        PostInteractNotification = UIManager.UUIManager.PostInteractNotification;
     }
+    
+    private void Start()
+    {
+        PostInteractNotification += UIManager.UUIManager.PostInteractNotification;
+        
+        // Temporary need link this to a reset
+        StartGame();
+    }
+    
     void OnDestroy()
     {
         PostInteractNotification = null;
         OnLimitedTime = null;
-    }
-
-    private void Start()
-    {
-        // Temporary need link this to a reset
-        StartGame();
     }
 
     void StartGame()

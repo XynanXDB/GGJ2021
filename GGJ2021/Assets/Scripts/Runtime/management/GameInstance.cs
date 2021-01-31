@@ -24,5 +24,8 @@ namespace Game.Runtime.management
         {
             
         }
+
+        public void LoadScene(string SceneName) 
+            => SceneManager.LoadScene(SceneName, LoadSceneMode.Single);
     }
 }

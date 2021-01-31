@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -30,6 +31,14 @@ namespace Game.Runtime.UI
             Deselected = new Color(0.91372f, 0.22352f, 0.2549f, 1.0f);
         }
 
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            
+            Selector.enabled = false;
+            Text.color = Deselected;
+        }
+
         public override void OnSelect(BaseEventData eventData)
         {
             base.OnSelect(eventData);
@@ -42,6 +51,27 @@ namespace Game.Runtime.UI
         {
             base.OnDeselect(eventData);
 
+            Selector.enabled = false;
+            Text.color = Deselected;
+        }
+
+        public override void OnPointerEnter(PointerEventData eventData)
+        {
+            base.OnPointerEnter(eventData);
+            
+            Selector.enabled = true;
+            Text.color = Selected;
+            
+            EventSystem.current.SetSelectedGameObject(gameObject);
+        }
+
+        public override void OnPointerExit(PointerEventData eventData)
+        {
+            base.OnPointerExit(eventData);
+
+            if (EventSystem.current.currentSelectedGameObject == gameObject) 
+                return;
+            
             Selector.enabled = false;
             Text.color = Deselected;
         }

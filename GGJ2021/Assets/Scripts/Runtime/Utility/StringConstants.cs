@@ -25,5 +25,10 @@
         public const string Gift = "ProfileGift";
 
         public const string AnimationVelocity = "Velocity";
+
+        public const string LevelEnding = "Ending";
+        public const string LevelMain= "MainLevel";
+        public const string LevelMainMenu = "MainMenu";
+        
     }
 }
