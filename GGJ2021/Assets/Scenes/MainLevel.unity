@@ -7509,6 +7509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74e1c2977017415e833472f918d934fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GFProfile: 
 --- !u!114 &1353103963
 MonoBehaviour:
   m_ObjectHideFlags: 0

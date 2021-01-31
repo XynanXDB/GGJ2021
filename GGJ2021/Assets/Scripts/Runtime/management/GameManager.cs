@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
         
         CueCardText.gameObject.SetActive(false);
         InGameHUD.SetActive(false);
+        GeneratorGFProfile();
     }
 
     void OnClickProfileOK()
@@ -103,10 +104,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SpawnObjects());
         // Supposely Coroutine Goes Here
         
-        GeneratorGFProfile();
         ProfilePrompt.SetActive(true);
-        
-        //
     }
 
     IEnumerator GameTimerCoroutine()
@@ -371,6 +369,8 @@ public class GameManager : MonoBehaviour
                                       "{2} \n\n" +
                                       $"ARGH!!! I gotta be quick!", ClothingBIo[ClothingIndex], SmellBio[SmellIndex], GiftBio[GiftIndex]);
         ProfileText.text = Output;
+
+        UIManager.UUIManager.GFProfile = GFBehaviour;
     }
 
     public int[] GetGFProfile()

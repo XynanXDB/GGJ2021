@@ -7,6 +7,8 @@ namespace Game.Runtime.UI
     {
         public static UIManager UUIManager;
         private GameObject FocusedGO;
+
+        public int[] GFProfile;
         
         void Awake()
         {
