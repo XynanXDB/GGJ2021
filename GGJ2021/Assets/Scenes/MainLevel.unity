@@ -8954,7 +8954,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1353103964}
   - component: {fileID: 1353103963}
-  - component: {fileID: 1353103962}
   - component: {fileID: 1353103965}
   m_Layer: 0
   m_Name: EventSystem
@@ -8963,20 +8962,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1353103962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1353103961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74e1c2977017415e833472f918d934fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GFProfile: 
-  GFChecklist: []
 --- !u!114 &1353103963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19467,6 +19452,7 @@ MonoBehaviour:
   ProfileOKButton: {fileID: 1065142102}
   InventoryList: {fileID: 22000623}
   BGM: {fileID: 1183185144}
+  GFBehaviour: 000000000000000000000000
   itemInventory: []
 --- !u!4 &2072562753
 Transform:

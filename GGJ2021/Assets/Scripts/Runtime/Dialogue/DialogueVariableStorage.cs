@@ -27,6 +27,7 @@ namespace Game.Runtime.Dialogue
             
             foreach (string Names in Checklist)
             {
+                Debug.Log(Names);
                 switch (Names)
                 {
                     case StringConstants.Phone:
