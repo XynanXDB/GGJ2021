@@ -3,9 +3,14 @@ guid: 0fb226bb410db7a4a92b5706fb4e5719
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_Counter
+    second: {fileID: 2100000, guid: 8211b8dd50b659f4bb0ee1d8207bf43e, type: 2}
   materials:
-    materialImportMode: 0
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1

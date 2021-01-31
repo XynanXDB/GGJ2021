@@ -3,9 +3,14 @@ guid: c6d31f5757e5b674bb049007ded33b41
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_Showerhead
+    second: {fileID: 2100000, guid: 16e832d108713894c8a6407a7b969b36, type: 2}
   materials:
-    materialImportMode: 0
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1

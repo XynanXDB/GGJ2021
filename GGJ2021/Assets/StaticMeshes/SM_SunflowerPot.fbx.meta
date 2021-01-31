@@ -3,9 +3,24 @@ guid: 9ea5e73f2133b88449aa6b85b65ac76a
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_Leaf
+    second: {fileID: 2100000, guid: c7c125ca6f5cd65419033e6f69e95ce8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_Sunflower
+    second: {fileID: 2100000, guid: 64c2eb26142071f4c9399f082b8c3cd7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_SunflowerBase
+    second: {fileID: 2100000, guid: 8ecff83322dedbb4abd780c5e5baefdc, type: 2}
   materials:
-    materialImportMode: 0
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1

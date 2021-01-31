@@ -3,9 +3,14 @@ guid: a3418bcb63e06b547af40f137021e52d
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_Cushion
+    second: {fileID: 2100000, guid: e96ddeea78308d341a4305845d755dbe, type: 2}
   materials:
-    materialImportMode: 0
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1

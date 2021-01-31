@@ -3,9 +3,14 @@ guid: a6285d62243dab248a22490510555217
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_DiningChair
+    second: {fileID: 2100000, guid: 9f2b58da3c4f7f84aaa9a32e71c72766, type: 2}
   materials:
-    materialImportMode: 0
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1

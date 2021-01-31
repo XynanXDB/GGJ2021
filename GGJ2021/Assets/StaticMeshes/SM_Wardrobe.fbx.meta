@@ -3,9 +3,14 @@ guid: a128a1910e5269d42b5ccf6e3f97e979
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_Wardrobe
+    second: {fileID: 2100000, guid: e6af9c89ebfe867479bcbd7c9b14d978, type: 2}
   materials:
-    materialImportMode: 0
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
