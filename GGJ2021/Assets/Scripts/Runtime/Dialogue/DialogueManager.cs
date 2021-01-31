@@ -34,11 +34,6 @@ namespace Game.Runtime.Dialogue
             DialogueRunner.onDialogueComplete.AddListener(OnDialogueEnd);
         }
 
-        void Start()
-        {
-            StartDialogue("Ending");
-        }
-
         void OnDialogueEnd()
         {
             DialogueRunner.Clear();
