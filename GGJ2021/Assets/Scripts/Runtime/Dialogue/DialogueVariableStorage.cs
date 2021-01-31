@@ -11,22 +11,17 @@ namespace Game.Runtime.Dialogue
         void Start()
         {
             int[] Profile = UIManager.UUIManager.GFProfile;
+            RetrieveChecklist();
 
             SetValue(StringConstants.Clothes, Profile[0]);
             SetValue(StringConstants.Smell, Profile[1]);
             SetValue(StringConstants.Gift, Profile[2]);
-            
-            Debug.Log(Profile[0]);
-            Debug.Log(Profile[1]);
-            Debug.Log(Profile[2]);
-            
-            RetrieveChecklist();
         }
 
         public void RetrieveChecklist()
         {
             List<string> Checklist = UIManager.UUIManager.GFChecklist;
-
+            
             foreach (string Names in Checklist)
             {
                 switch (Names)
