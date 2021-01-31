@@ -15,3 +15,5 @@ MonoBehaviour:
   DialogueDB:
   - Key: Test
     YarnAsset: {fileID: 11400000, guid: 40a60c3c28a91d34bbf2088bb0d2824a, type: 3}
+  - Key: Ending
+    YarnAsset: {fileID: 2480198943629176163, guid: c60d3e492868edc4fa6039d834a53fc3, type: 3}

@@ -24,7 +24,7 @@ namespace Game.Runtime.Dialogue
             if (Visuals.enabled)
                 DialogueUI.MarkLineComplete();
             else
-                DialogueUI.textSpeed = 0.001f;
+                DialogueUI.textSpeed = 0.0001f;
         }
 
         void OnDialogueEnd()

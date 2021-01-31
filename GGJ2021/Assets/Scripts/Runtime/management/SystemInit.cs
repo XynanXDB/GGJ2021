@@ -9,6 +9,10 @@ namespace Game.Runtime.management
         static void OnStartUp()
         {
             Application.targetFrameRate = 60;
+            
+            GameObject obj = GameObject.FindGameObjectWithTag("GameInstance");
+            if (obj == null)
+                GameInstance.UGameInstance = CreateManager("GameInstance").GetComponent<GameInstance>();
         }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]

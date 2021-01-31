@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Game.Runtime.UI
@@ -7,6 +8,9 @@ namespace Game.Runtime.UI
     {
         public static UIManager UUIManager;
         private GameObject FocusedGO;
+
+        public int[] GFProfile;
+        public List<string> GFChecklist;
         
         void Awake()
         {
@@ -31,6 +35,11 @@ namespace Game.Runtime.UI
             
             if (FocusedGO != null)
                 EventSystem.current.SetSelectedGameObject(FocusedGO);
+        }
+
+        public void PostInteractNotification(string ItemName)
+        {
+            
         }
     }
 }
