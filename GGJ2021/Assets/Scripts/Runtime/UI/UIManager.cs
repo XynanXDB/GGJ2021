@@ -10,7 +10,7 @@ namespace Game.Runtime.UI
         public static UIManager UUIManager;
         private GameObject FocusedGO;
 
-        public int[] GFProfile;
+        public int[] GFProfile = new int[3];
         public List<string> GFChecklist;
         
         void Awake()
@@ -42,5 +42,6 @@ namespace Game.Runtime.UI
         {
             
         }
+
     }
 }
